@@ -1,0 +1,21 @@
+<Project>
+
+  <!--
+    Shared settings for the C# bridge labs.
+
+    Target framework: net10.0 (this machine has SDK 10.0.303).
+    No external NuGet packages are referenced anywhere in this solution: every lab builds
+    from the shared framework alone, so the labs work offline and in a locked-down env.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>

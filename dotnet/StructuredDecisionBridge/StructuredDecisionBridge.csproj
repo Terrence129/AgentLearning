@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>StructuredDecisionBridge</RootNamespace>
+    <AssemblyName>StructuredDecisionBridge</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bridge.Shared\Bridge.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

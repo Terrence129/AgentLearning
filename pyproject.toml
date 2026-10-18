@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agentlab"
+version = "0.1.0"
+description = "AgentLab — a from-scratch, test-driven lab for learning modern agent-system engineering."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Terrence Chen" }]
+keywords = ["agents", "llm", "mcp", "evals", "learning"]
+
+# Deliberately small. Philosophy: the interesting parts are built from scratch,
+# not imported. Add an extra only when a lab genuinely needs it.
+dependencies = [
+    "httpx>=0.27.0",
+    "pydantic>=2.7.0",
+    "python-dotenv>=1.0.1",
+    "rich>=13.7.0",
+    "typer>=0.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.5.0",
+    "mypy>=1.10.0",
+]
+notebook = ["jupyterlab>=4.2.0", "ipykernel>=6.29.0"]
+vector = ["numpy>=1.26.0"]
+web = ["fastapi>=0.111.0", "uvicorn[standard]>=0.30.0", "jinja2>=3.1.0", "python-multipart>=0.0.9"]
+mcp = ["mcp>=1.2.0"]
+openai = ["openai>=1.40.0"]
+obs = ["opentelemetry-sdk>=1.25.0", "opentelemetry-exporter-otlp>=1.25.0"]
+
+[project.scripts]
+agentlab = "agentlab.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agentlab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Lab tests (tests/weekNN) start red on purpose, so they are excluded unless
+# you ask for them: `pytest -m week`, or `.\tasks.ps1 week 2`.
+addopts = '-q --strict-markers -m "not week"'
+markers = [
+    "network: calls a real model provider; skipped unless AGENTLAB_ALLOW_NETWORK=1",
+    "slow: takes more than ~5 seconds",
+    "week: identifies the lab week a test belongs to",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["agentlab", "tests", "solutions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4", "RET"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["B011"]
+"solutions/**" = ["E741"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_ignores = true
+ignore_missing_imports = true
+packages = ["agentlab"]
+
+[tool.coverage.run]
+source = ["agentlab"]
+omit = ["agentlab/web/*"]

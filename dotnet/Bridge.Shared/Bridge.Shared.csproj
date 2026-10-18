@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Bridge.Shared</RootNamespace>
+    <AssemblyName>Bridge.Shared</AssemblyName>
+  </PropertyGroup>
+
+</Project>

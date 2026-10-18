@@ -1,0 +1,48 @@
+# --- personal / non-course material -------------------------------------
+PersonalInfo/
+
+# --- secrets -------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- python --------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# --- jupyter -------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- agentlab runtime artifacts -----------------------------------------
+data/
+traces/
+*.sqlite
+*.sqlite3
+*.db
+pytest-of-*/
+
+# --- .NET bridge labs ----------------------------------------------------
+dotnet/**/bin/
+dotnet/**/obj/
+*.user
+.vs/
+
+# --- editors / OS --------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- learning scratch ----------------------------------------------------
+labs/**/scratch/
+solutions/**/*.bak

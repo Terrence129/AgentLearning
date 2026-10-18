@@ -1,0 +1,7 @@
+# Build output
+bin/
+obj/
+
+# Tooling scratch
+*.user
+.vs/
