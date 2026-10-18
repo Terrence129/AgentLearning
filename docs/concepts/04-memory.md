@@ -1,4 +1,4 @@
-# 04 — Memory
+﻿# 04 — Memory
 
 > **Week 4 · just-in-time concept note.** Read after [03 — Context Engineering](./03-context-engineering.md), before the [context & memory lab](../../labs/week04-context-memory/README.md) (~25 min). Context engineering keeps one run coherent; memory is what survives between runs — and it is the feature most often built before it is understood.
 
@@ -115,3 +115,4 @@ Episodic memory (traces) is the substrate; **learning** is the process that turn
 - [Mem0: production long-term memory](https://arxiv.org/abs/2504.19413) (2025) — extraction/consolidation with cost and latency numbers; read critically.
 - [Agentic Context Engineering (ACE)](https://arxiv.org/abs/2510.04618) (ICLR 2026) — evolving playbooks, brevity bias and context collapse.
 - [A-MEM: Agentic Memory](https://arxiv.org/abs/2502.12110) (2025) — Zettelkasten-style linked notes; a useful contrast to flat vector memory.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.3 §3.1–3.3 — memory hierarchy and storage formats, RAG chunking/dense/sparse/hybrid retrieval, structured indexing, agentic RAG, contextual retrieval. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

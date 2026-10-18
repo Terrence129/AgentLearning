@@ -1,4 +1,4 @@
-# 02 — Tool Design
+﻿# 02 — Tool Design
 
 > **Week 2 · just-in-time concept note.** Read before the [agent loop lab](../../labs/week02-agent-loop/README.md) (~20 min). The loop is the machinery; tools are the product surface. Most "the agent is dumb" complaints are tool-design bugs.
 
@@ -120,3 +120,4 @@ Make `is_write` explicit and treat it as a risk declaration, not a label. Write 
 - [Anthropic — Code execution with MCP](https://www.anthropic.com/engineering/code-execution-with-mcp) (2025-11) — progressive tool disclosure and the 150k → 2k token result; read it before designing a large tool catalogue.
 - [SWE-agent](https://arxiv.org/abs/2405.15793) (2024) — the agent–computer interface paper: command design as the main lever.
 - [smolagents](https://github.com/huggingface/smolagents) — read the whole ~1k-line core to see tools, executor and memory in one small system.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.4 §4.1–4.2 and §4.4 + ch.2 §2.4.6 — capability-expression forms, the art of tool descriptions, parameter fidelity, and what to do when the catalogue outgrows the context. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

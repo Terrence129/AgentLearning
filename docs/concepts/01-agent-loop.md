@@ -1,4 +1,4 @@
-# 01 — The Agent Loop
+﻿# 01 — The Agent Loop
 
 > **Weeks 1–2 · just-in-time concept note.** Read before the labs (~25 min): [provider seam](../../labs/week01-provider/README.md), then [agent loop](../../labs/week02-agent-loop/README.md). You do not need framework knowledge. You need to know exactly what goes over the wire, where state lives, and how the loop stops.
 
@@ -110,3 +110,4 @@ Compaction keeps a single run alive, but it is not memory: each new session stil
 - [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629) (2022) — the loop's research ancestor; read for the thought/action/observation structure.
 - [12-Factor Agents](https://github.com/humanlayer/12-factor-agents) (2025) — "own your prompt, context, control flow and state" as a production checklist.
 - [SWE-agent: agent–computer interfaces](https://arxiv.org/abs/2405.15793) (2024) — the evidence that the harness, not just the model, moves benchmark results.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.1 + ch.2 §2.2 — the harness framing, the five harness elements, and the same loop at API level with a code walkthrough. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

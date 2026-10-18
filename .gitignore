@@ -1,6 +1,9 @@
 # --- personal / non-course material -------------------------------------
 PersonalInfo/
 
+# --- book binaries (local only; official free downloads are linked in docs/books) ---
+docs/books/**/*.pdf
+
 # --- secrets -------------------------------------------------------------
 .env
 .env.*

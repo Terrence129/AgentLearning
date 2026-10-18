@@ -48,6 +48,7 @@ Notes 06–09 assume the earlier mechanisms exist. They are still readable stand
 - **During the week:** keep the note open next to the failing tests. The "Common misconceptions" table is the fastest debugging heuristic when a test fails for a conceptual reason.
 - **Saturday:** answer the five questions from memory, then write the weekly teach-back. The [glossary](../glossary.md) and weekly flashcards are the spaced-repetition layer; this folder is the just-in-time layer.
 - **When you are stuck:** the relevant section of a note plus the lab's hints should unblock you; if not, ask the tutor with the test name and what you tried.
+- **Companion textbook:** each note's *Reading* section points at the matching chapter of [*AI Agents in Depth*](../books/ai-agents-in-depth/README.md) v2.0 — deeper theory plus 109 experiments. The week-by-week map, reading paths and the gap analysis are in [CHAPTER-MAP](../books/ai-agents-in-depth/CHAPTER-MAP.md).
 
 The full nine-week schedule lives in [`docs/plan/LEARNING-PLAN.md`](../plan/LEARNING-PLAN.md); the lab index is [`labs/README.md`](../../labs/README.md); the research reports these notes compress are in [`docs/research/`](../research/01-agent-architecture-sota.md).
 

@@ -1,4 +1,4 @@
-# 03 — Context Engineering
+﻿# 03 — Context Engineering
 
 > **Weeks 3–4 · just-in-time concept note.** Read before week 3's [structured-output lab](../../labs/week03-structured-output/README.md) (~20 min) and re-read before week 4's [context & memory lab](../../labs/week04-context-memory/README.md). Week 3 teaches you that prompts are versioned assets; week 4 makes context a budget you manage at runtime.
 
@@ -107,3 +107,4 @@ Poisoning has two shapes: **stale/wrong data** (a wiki page that contradicts pol
 - [Anthropic — Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) (2025-11) — initializer/coding agents, progress files, JSON feature lists, git as state.
 - [Agentic Context Engineering (ACE)](https://arxiv.org/abs/2510.04618) (ICLR 2026) — evolving playbooks, brevity bias and context collapse; read the failure analysis, not just the +10.6%.
 - [12-Factor Agents](https://github.com/humanlayer/12-factor-agents) (2025) — "own your context window" as a rule, with concrete small-agent patterns.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.2 §2.3, §2.6–2.7 — KV-cache/chat-template mechanics, the Agent status bar, and production-grade hierarchical compression. This is the deepest treatment of the mechanisms this note compresses. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

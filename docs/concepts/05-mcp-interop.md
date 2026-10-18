@@ -1,4 +1,4 @@
-# 05 — MCP and Interoperability
+﻿# 05 — MCP and Interoperability
 
 > **Week 5 · just-in-time concept note.** Read before the lab (~25 min), then read the [changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog) with the tab open. You need the protocol's shape, its current revision, and the attacks it does *not* stop — not memorised spec text.
 
@@ -98,3 +98,4 @@ All four are in the [security best practices](https://modelcontextprotocol.io/do
 - [MCP security best practices](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices) — confused deputy, token passthrough, SSRF, state-handle hijacking.
 - [A2A v1.0: what's new](https://a2a-protocol.org/v1.0.0/whats-new-v1/) — agent cards, bindings, breaking changes.
 - [AG-UI specification 1.0](https://docs.ag-ui.com/spec/1.0/index) — event families and conformance.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.4 §4.3–4.4 — MCP in the wider tool ecosystem, skills as on-demand lookup, and proactive tool discovery. Treat the book as the map and this repo's lab as the wire-level implementation. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

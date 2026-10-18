@@ -36,6 +36,8 @@ Most agent tutorials teach framework APIs. That produces people who can wire a d
 
 The full research basis — 5 deep-research reports, ~20k words with citations — lives in [`docs/research/`](docs/research/README.md).
 
+**Companion textbook:** [*AI Agents in Depth*](docs/books/ai-agents-in-depth/README.md) by Bojie Li (v2.0, 2026, free/Apache-2.0) — deep theory plus 109 experiments, mapped week-by-week in [CHAPTER-MAP.md](docs/books/ai-agents-in-depth/CHAPTER-MAP.md). It supplies the *why*; this repo supplies the tests, governance and SendOS transfer.
+
 ---
 
 ## Quickstart
@@ -70,6 +72,7 @@ Read **[START-HERE.md](START-HERE.md)** first — it is a 90-minute on-ramp, not
 | [`docs/plan/LEARNER-PROFILE.md`](docs/plan/LEARNER-PROFILE.md) | Your starting point, constraints, goals, and API access |
 | [`docs/concepts/`](docs/concepts/README.md) | Just-in-time concept notes (one per week), with the minimum theory and the failure modes |
 | [`docs/research/`](docs/research/README.md) | The deep-research reports this curriculum was built from |
+| [`docs/books/`](docs/books/README.md) | Companion textbooks: assessment, chapter→week map, reading paths |
 | [`docs/sendos/`](docs/sendos/README.md) | SendOS concept map, bridge labs, and reading order |
 | [`docs/glossary.md`](docs/glossary.md) | Terms you should be able to define without notes |
 | [`agentlab/`](agentlab/) | The package you build: providers, loop, tools, context, mcp, orchestrator, evals, guard, capstone |
@@ -152,7 +155,7 @@ High-value pairings (details in [`docs/sendos/BRIDGE.md`](docs/sendos/BRIDGE.md)
 
 - [x] Foundation: package skeleton, config, tracing, budgets, mock provider, tool registry — 29 tests green
 - [x] All 9 lab scaffolds: starter stubs, failing specifications, reference solutions, lab briefs — **563 lab tests**, each independently verified red → green → restored
-- [x] Research base (5 reports, ~20k words), learning plan, concept notes, glossary, quizzes, flashcards
+- [x] Research base (5 reports, ~20k words), companion textbook integrated with a week-by-week chapter map, learning plan, concept notes, glossary, quizzes, flashcards
 - [x] SendOS bridge docs + C# bridge labs (dotnet build: 0 warnings, 0 errors; both self-test suites pass)
 - [x] Repo integrity: 0 broken internal links, ruff clean, CI workflow in place
 - [ ] Week 1 lab — **this is your next action**

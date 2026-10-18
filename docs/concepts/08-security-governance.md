@@ -1,4 +1,4 @@
-# 08 — Security and Governance
+﻿# 08 — Security and Governance
 
 > **Week 8 · just-in-time concept note.** Read before the lab (~25 min). The lab asks you to assume manipulation and design so it does not matter. **Reads with:** [research 03 §3–7](../research/03-production-evals-ops.md) · **Lab:** `week08-security`.
 
@@ -121,3 +121,4 @@ Two reads: GPAI obligations applied **Aug 2025** but enforcement began **Aug 202
 - [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) — why guardrails are not the boundary.
 - [MCP security best practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) — confused deputy, token passthrough, session hijacking.
 - [Research 03 §3–7](../research/03-production-evals-ops.md) — the full threat model and governance map.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.2 §2.4.7 (injection as a context problem), ch.4 permission/irreversibility, ch.9 §9.3.2 (safety boundaries for self-improvement). **Gap to keep in mind:** the book does not cover approval binding, authority intersection or tenant isolation — those stay repo-primary (weeks 6/8). [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

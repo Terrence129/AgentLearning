@@ -50,6 +50,18 @@ Each week is a contract:
 - **Outputs:** green `tests/weekNN`, a lab artifact, a weekly review, 5 flashcards.
 - **Gate:** you cannot start week N+1 until week N's gate passes (see [`CHECKPOINTS.md`](CHECKPOINTS.md)).
 
+### Companion textbook (optional, time-boxed)
+
+The curriculum adopts **[*AI Agents in Depth*](https://github.com/bojieli/ai-agent-book)** (Bojie Li, v2.0, 2026, Apache-2.0) as its companion textbook — deep theory plus 109 runnable experiments. The local copy and full assessment live in [`docs/books/ai-agents-in-depth/`](../books/ai-agents-in-depth/README.md).
+
+Use it in exactly three moments:
+
+1. **Before the week:** read the mapped 30–60 minute section to build vocabulary.
+2. **When a test fails for a conceptual reason:** re-read that section — it usually explains the *why* behind the failing contract.
+3. **After the gate:** optionally run one of the chapter's experiments and compare its implementation with yours.
+
+It never replaces a lab. If the week is short, read nothing and ship green tests. Week-by-week mapping, reading paths (6 h / 20 h / 60 h), selected experiments and the gap analysis — including why weeks 6 and 8 stay repo-primary — are in [`CHAPTER-MAP.md`](../books/ai-agents-in-depth/CHAPTER-MAP.md).
+
 ---
 
 ## 4. Week-by-week

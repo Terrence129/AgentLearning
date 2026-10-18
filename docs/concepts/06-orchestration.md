@@ -1,4 +1,4 @@
-# 06 — Orchestration and Approval
+﻿# 06 — Orchestration and Approval
 
 > **Week 6 · just-in-time concept note.** Read before the lab (~30 min). The lab builds an orchestrator, specialists and an approval gate; this note explains when each is justified and the invariants that make it trustworthy.
 
@@ -104,3 +104,4 @@ Treat suspend/resume as state, not a paused thread: serialize pending state, let
 - [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) — 15× cost, +90.2% only on breadth-first research.
 - [Don't Build Multi-Agents](https://cognition.com/blog/dont-build-multi-agents) — context isolation, conflicting implicit decisions.
 - [Research 01 §6](../research/01-agent-architecture-sota.md) — autonomy, HITL, durable pause/resume.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.10 §10.1–10.5 + ch.2 §2.7.6 — shared vs non-shared context × topology, the information-gain test for multi-agent, and six named failure modes. It complements this note's approval-first framing. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

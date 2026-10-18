@@ -1,4 +1,4 @@
-# 07 — Evals and Observability
+﻿# 07 — Evals and Observability
 
 > **Week 7 · just-in-time concept note.** Read before the lab (~25 min). The lab asks you to build a dataset, harness, judge and CI gate — this note explains why reliability, not best-case quality, is the thing you are measuring. **Reads with:** [research 03 §1–2](../research/03-production-evals-ops.md) · **Lab:** `week07-evals`.
 
@@ -125,3 +125,4 @@ Model each run as a trace of spans. OTel GenAI defines the vocabulary — `invok
 - [Judging LLM-as-a-Judge](https://arxiv.org/abs/2306.05685) — the bias catalogue you calibrate against.
 - [OTel GenAI agent spans](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-agent-spans.md) — span/attribute vocabulary and its `Development` status.
 - [Research 03 §1–2](../research/03-production-evals-ops.md) — the full eval and observability map.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.7 §7.2, §7.5, §7.7–7.8 — pass@k vs pass^k, judge methods, failure attribution in trajectories, statistical significance, and observability. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).

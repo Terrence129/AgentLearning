@@ -1,4 +1,4 @@
-# 09 — Production: Durability, Cost, and the Checks That Matter
+﻿# 09 — Production: Durability, Cost, and the Checks That Matter
 
 > **Week 9 and beyond · just-in-time concept note.** Read before the capstone (~25 min). This note is about the runs that don't complete — and the readiness checks you are allowed to skip. **Reads with:** [research 03 §4–8](../research/03-production-evals-ops.md) · **Lab:** `week09-capstone`.
 
@@ -103,3 +103,4 @@ Defer deliberately: ISO/IEC 42001 and NIST AI RMF crosswalks, a full AI-BOM, SCI
 - [Anthropic prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) — exact multipliers, TTLs and prefix rules.
 - [AWS Lambda quotas](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html) — the 15-minute wall and 2026 durable/MicroVM options.
 - [Research 03 §4–8](../research/03-production-evals-ops.md) — the full production and governance map.
+- **Companion book:** *AI Agents in Depth* v2.0, ch.9 §9.1–9.3 (experience → knowledge → instructions → programs → parameters; "done ≠ progress") + ch.7 §7.6/§7.9 (model selection, cost, benchmark→roadmap). The theory behind this repo's trace→eval→publish loop. [Chapter map](../books/ai-agents-in-depth/CHAPTER-MAP.md).
