@@ -81,10 +81,19 @@ def doctor(
     )
 
     settings = Settings.from_env(env_file=env_path)
-    if settings.providers:
-        for name, cfg in sorted(settings.providers.items()):
-            rows.append(("provider", "ok", f"{name}: model={cfg.model} base_url={cfg.base_url}"))
-    else:
+    for name, cfg in sorted(settings.providers.items()):
+        rows.append(("provider", "ok", f"{name}: model={cfg.model} base_url={cfg.base_url}"))
+    if settings.skipped_providers:
+        rows.append(
+            (
+                "provider",
+                "fail",
+                "placeholder key(s) for "
+                + ", ".join(settings.skipped_providers)
+                + " -- replace the 'sk-...' values in .env with real keys",
+            )
+        )
+    if not settings.providers and not settings.skipped_providers:
         rows.append(("provider", "fail", "no provider configured -- add OPENAI_API_KEY or DEEPSEEK_API_KEY"))
 
     rows.append(("default", "info", settings.default_provider))

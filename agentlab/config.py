@@ -47,6 +47,23 @@ def _get(env: Mapping[str, str], *names: str, default: str | None = None) -> str
     return default
 
 
+#: Markers that appear in sample keys (``sk-...``, ``<your-key>``, ...) but never
+#: in a real key. Accepting them silently produces a confusing 401 instead of a
+#: clear "you have not added your key yet" error.
+_PLACEHOLDER_MARKERS = ("...", "<", "your-", "changeme", "replace-me", "xxxx")
+
+
+def is_placeholder_secret(value: str) -> bool:
+    """True when a configured secret is obviously a sample value, not a real key."""
+    text = value.strip()
+    if not text:
+        return True
+    if len(text) < 12:
+        return True
+    lowered = text.lower()
+    return any(marker in lowered for marker in _PLACEHOLDER_MARKERS)
+
+
 @dataclass(frozen=True, slots=True)
 class Settings:
     """Resolved process configuration."""
@@ -58,6 +75,8 @@ class Settings:
     run_budget_usd: float
     allow_network: bool
     env_file: Path | None = field(default=None, compare=False)
+    #: Providers whose key was present but looked like a sample value.
+    skipped_providers: tuple[str, ...] = ()
 
     # -- construction ------------------------------------------------------
 
@@ -81,35 +100,45 @@ class Settings:
             env = os.environ
 
         providers: dict[str, ProviderConfig] = {}
+        skipped: list[str] = []
         openai_key = _get(env, "OPENAI_API_KEY")
         if openai_key:
-            providers["openai"] = ProviderConfig(
-                name="openai",
-                api_key=openai_key,
-                base_url=_get(env, "OPENAI_BASE_URL", default=DEFAULT_OPENAI_BASE_URL)
-                or DEFAULT_OPENAI_BASE_URL,
-                model=_get(env, "OPENAI_MODEL", default="gpt-4.1-mini") or "gpt-4.1-mini",
-            )
+            if is_placeholder_secret(openai_key):
+                skipped.append("openai")
+            else:
+                providers["openai"] = ProviderConfig(
+                    name="openai",
+                    api_key=openai_key,
+                    base_url=_get(env, "OPENAI_BASE_URL", default=DEFAULT_OPENAI_BASE_URL)
+                    or DEFAULT_OPENAI_BASE_URL,
+                    model=_get(env, "OPENAI_MODEL", default="gpt-4.1-mini") or "gpt-4.1-mini",
+                )
 
         deepseek_key = _get(env, "DEEPSEEK_API_KEY")
         if deepseek_key:
-            providers["deepseek"] = ProviderConfig(
-                name="deepseek",
-                api_key=deepseek_key,
-                base_url=_get(env, "DEEPSEEK_BASE_URL", default=DEFAULT_DEEPSEEK_BASE_URL)
-                or DEFAULT_DEEPSEEK_BASE_URL,
-                model=_get(env, "DEEPSEEK_MODEL", default="deepseek-chat") or "deepseek-chat",
-            )
+            if is_placeholder_secret(deepseek_key):
+                skipped.append("deepseek")
+            else:
+                providers["deepseek"] = ProviderConfig(
+                    name="deepseek",
+                    api_key=deepseek_key,
+                    base_url=_get(env, "DEEPSEEK_BASE_URL", default=DEFAULT_DEEPSEEK_BASE_URL)
+                    or DEFAULT_DEEPSEEK_BASE_URL,
+                    model=_get(env, "DEEPSEEK_MODEL", default="deepseek-chat") or "deepseek-chat",
+                )
 
         compat_key = _get(env, "COMPAT_API_KEY")
         if compat_key:
             name = (_get(env, "COMPAT_NAME", default="compat") or "compat").lower()
-            providers[name] = ProviderConfig(
-                name=name,
-                api_key=compat_key,
-                base_url=_get(env, "COMPAT_BASE_URL", default="") or "",
-                model=_get(env, "COMPAT_MODEL", default="") or "",
-            )
+            if is_placeholder_secret(compat_key):
+                skipped.append(name)
+            else:
+                providers[name] = ProviderConfig(
+                    name=name,
+                    api_key=compat_key,
+                    base_url=_get(env, "COMPAT_BASE_URL", default="") or "",
+                    model=_get(env, "COMPAT_MODEL", default="") or "",
+                )
 
         return cls(
             default_provider=(_get(env, "DEFAULT_PROVIDER", default="deepseek") or "deepseek").lower(),
@@ -120,6 +149,7 @@ class Settings:
             allow_network=(_get(env, "AGENTLAB_ALLOW_NETWORK", default="0") or "0").lower()
             in {"1", "true", "yes"},
             env_file=loaded_from,
+            skipped_providers=tuple(skipped),
         )
 
     # -- access ------------------------------------------------------------
@@ -133,6 +163,11 @@ class Settings:
             )
         if target not in self.providers:
             available = ", ".join(sorted(self.providers)) or "none"
+            if target in self.skipped_providers:
+                raise ConfigError(
+                    f"Provider {target!r} still has a placeholder key in .env "
+                    "(for example 'sk-...'). Replace it with a real API key, then retry."
+                )
             raise ConfigError(
                 f"Provider {target!r} is not configured. Available: {available}. "
                 "Copy .env.example to .env and add the key for the provider you want."

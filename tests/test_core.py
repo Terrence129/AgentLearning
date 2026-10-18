@@ -92,6 +92,14 @@ def test_mock_provider_name_is_not_a_real_provider() -> None:
         settings.provider("mock")
 
 
+def test_placeholder_keys_are_not_treated_as_configured() -> None:
+    settings = Settings.from_env(env={"OPENAI_API_KEY": "sk-...", "DEEPSEEK_API_KEY": "sk-..."})
+    assert settings.providers == {}
+    assert set(settings.skipped_providers) == {"openai", "deepseek"}
+    with pytest.raises(ConfigError, match="placeholder"):
+        settings.provider("openai")
+
+
 # ---------------------------------------------------------------------------
 # pricing & budgets
 # ---------------------------------------------------------------------------
