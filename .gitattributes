@@ -1,0 +1,8 @@
+# Normalise line endings so the repo behaves the same on Windows, macOS and CI.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.docx binary
