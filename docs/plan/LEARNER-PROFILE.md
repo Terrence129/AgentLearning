@@ -28,7 +28,7 @@
 
 - **Time:** 8–12 h/week alongside the SendOS internship and NUS coursework. Realistic pattern: Tue 20:00 (2 h), Thu 20:00 (2 h), Sat 09:00–13:00 (3–4 h). Some weeks will be minimum-viable weeks (see [`WEEKLY-RHYTHM.md`](WEEKLY-RHYTHM.md) §8).
 - **Budget:** DeepSeek primary (cheap, high-volume labs), OpenAI secondary (comparison labs). Total model spend target **under $5** for the whole curriculum; `AGENTLAB_RUN_BUDGET_USD=0.50` default stays on.
-- **Machine:** Windows 11 + PowerShell 7; Python 3.12 via `uv`. Repo is `D:\DevRepo\MyProjects\AgentLearning`.
+- **Machine:** Windows 11; Windows PowerShell 5.1 (PowerShell 7 recommended, both work); Python 3.12 via `uv`; .NET 10 SDK available for the bridge labs. Repo is `D:\DevRepo\MyProjects\AgentLearning`.
 - **Context switching:** internship work is `.NET`; the curriculum is Python. The plan deliberately uses Python for learning (sample density) and C# only for the SendOS bridge.
 
 ## 4. Working preferences and strengths to exploit

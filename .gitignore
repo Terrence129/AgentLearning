@@ -30,6 +30,7 @@ traces/
 *.sqlite3
 *.db
 pytest-of-*/
+.pytest_tmp/
 
 # --- .NET bridge labs ----------------------------------------------------
 dotnet/**/bin/
