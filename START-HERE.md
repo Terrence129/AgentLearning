@@ -17,7 +17,7 @@ The rule that makes this work: **you write code every week, and a failing test s
 
 ## 2. Setup (15 min)
 
-Open a PowerShell 7 terminal in `D:\DevRepo\MyProjects\AgentLearning`.
+Open a PowerShell terminal (Windows PowerShell 5.1 or PowerShell 7) in `D:\DevRepo\MyProjects\AgentLearning`.
 
 ```powershell
 .\tasks.ps1 setup

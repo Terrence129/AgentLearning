@@ -72,11 +72,13 @@ Read **[START-HERE.md](START-HERE.md)** first — it is a 90-minute on-ramp, not
 | [`docs/research/`](docs/research/README.md) | The deep-research reports this curriculum was built from |
 | [`docs/sendos/`](docs/sendos/README.md) | SendOS concept map, bridge labs, and reading order |
 | [`docs/glossary.md`](docs/glossary.md) | Terms you should be able to define without notes |
-| [`agentlab/`](agentlab/) | The package you build: providers, loop, tools, context, mcp, orchestrator, evals, guard |
+| [`agentlab/`](agentlab/) | The package you build: providers, loop, tools, context, mcp, orchestrator, evals, guard, capstone |
 | [`labs/`](labs/) | Weekly lab briefs: goal, specification, acceptance criteria, stretch |
 | [`tests/`](tests/) | The specification. `tests/weekNN/` = that week's exit gate |
 | [`solutions/`](solutions/) | Reference implementations — open only after your tests pass |
 | [`projects/`](projects/) | Capstone and portfolio deliverables |
+| [`dotnet/`](dotnet/README.md) | C# bridge labs: provider/SSE/retry and typed-decision equivalents, mirroring weeks 1 and 3 |
+| [`scripts/`](scripts/) | Repo utilities: internal link checker, capstone demo |
 | [`templates/`](templates/) | Weekly review, lab notes, ADR, portfolio write-up templates |
 
 ---
@@ -138,20 +140,26 @@ High-value pairings (details in [`docs/sendos/BRIDGE.md`](docs/sendos/BRIDGE.md)
 
 ## Requirements
 
-- Windows 11 + PowerShell 7 (works on macOS/Linux with `uv` directly)
+- Windows 11 + PowerShell (Windows PowerShell 5.1 works; PowerShell 7 recommended) — also works on macOS/Linux with `uv` directly
 - Python 3.12 (installed automatically by `uv`)
 - At least one provider key: **DeepSeek** or **OpenAI** (both configured in `.env.example`)
 - ~$2–5 of model spend for the whole curriculum (most labs run on mocks)
+- Optional: .NET 10 SDK for the C# bridge labs in [`dotnet/`](dotnet/README.md)
 
 ---
 
 ## Status
 
-- [x] Foundation: package skeleton, config, tracing, budgets, mock provider, tool registry
-- [ ] Week 1 lab — next up
-- [ ] Weeks 2–9 — scaffolds generated as you advance
+- [x] Foundation: package skeleton, config, tracing, budgets, mock provider, tool registry — 29 tests green
+- [x] All 9 lab scaffolds: starter stubs, failing specifications, reference solutions, lab briefs — **563 lab tests**, each independently verified red → green → restored
+- [x] Research base (5 reports, ~20k words), learning plan, concept notes, glossary, quizzes, flashcards
+- [x] SendOS bridge docs + C# bridge labs (dotnet build: 0 warnings, 0 errors; both self-test suites pass)
+- [x] Repo integrity: 0 broken internal links, ruff clean, CI workflow in place
+- [ ] Week 1 lab — **this is your next action**
 
-See [`docs/plan/PROGRESS.md`](docs/plan/PROGRESS.md) for the live tracker.
+Each lab was verified independently: the starter fails for the intended reason, the reference solution passes, and the tree is restored to the learner state. No lab test touches the network.
+
+See [`docs/plan/PROGRESS.md`](docs/plan/PROGRESS.md) for the live tracker you fill in.
 
 ---
 

@@ -39,6 +39,18 @@ function Invoke-Uv {
     if ($LASTEXITCODE -ne 0) { throw "uv $($Arguments -join ' ') failed with exit code $LASTEXITCODE" }
 }
 
+# For commands whose non-zero exit is meaningful (failing lab tests, an
+# unconfigured doctor): run them, print the output, and propagate the code
+# without a PowerShell exception trace.
+function Invoke-UvAllowFailure {
+    param([string[]]$Arguments)
+    $uv = Get-Uv
+    # Out-Host keeps the child output out of this function's return value, so
+    # the caller receives only the exit code.
+    & $uv @Arguments | Out-Host
+    return $LASTEXITCODE
+}
+
 function Format-Week([string]$Value) {
     if ([string]::IsNullOrWhiteSpace($Value)) { throw "This command needs a week number, e.g. .\tasks.ps1 week 2" }
     return ('{0:D2}' -f [int]$Value)
@@ -78,7 +90,11 @@ First time here? Read START-HERE.md, then run: .\tasks.ps1 setup
             Write-Host "[3/4] .env already exists, leaving it alone." -ForegroundColor DarkGray
         }
         Write-Host "[4/4] Running doctor..." -ForegroundColor Cyan
-        Invoke-Uv @('run', 'python', '-m', 'agentlab.cli', 'doctor')
+        $doctorCode = Invoke-UvAllowFailure @('run', 'python', '-m', 'agentlab.cli', 'doctor')
+        if ($doctorCode -ne 0) {
+            Write-Host "`nDoctor reported issues (expected until you add an API key)." -ForegroundColor Yellow
+            Write-Host "Edit .env, then run: .\tasks.ps1 doctor" -ForegroundColor Yellow
+        }
         Write-Host "`nSetup done. Next: read START-HERE.md" -ForegroundColor Green
         break
     }
@@ -88,14 +104,13 @@ First time here? Read START-HERE.md, then run: .\tasks.ps1 setup
         Invoke-Uv $argsList
         break
     }
-    'doctor' { Invoke-Uv @('run', 'python', '-m', 'agentlab.cli', 'doctor') }
-    'chat' { Invoke-Uv @('run', 'python', '-m', 'agentlab.cli', 'chat') }
-    'test' { Invoke-Uv @('run', 'pytest', '-q') }
-    'labs' { Invoke-Uv @('run', 'pytest', '-m', 'week', '-v') }
+    'doctor' { exit (Invoke-UvAllowFailure @('run', 'python', '-m', 'agentlab.cli', 'doctor')) }
+    'chat' { exit (Invoke-UvAllowFailure @('run', 'python', '-m', 'agentlab.cli', 'chat')) }
+    'test' { exit (Invoke-UvAllowFailure @('run', 'pytest', '-q')) }
+    'labs' { exit (Invoke-UvAllowFailure @('run', 'pytest', '-m', 'week', '-v')) }
     'week' {
         $w = Format-Week $Week
-        Invoke-Uv @('run', 'pytest', "tests/week$w", '-m', 'week', '-v')
-        break
+        exit (Invoke-UvAllowFailure @('run', 'pytest', "tests/week$w", '-m', 'week', '-v'))
     }
     'fmt' { Invoke-Uv @('run', 'ruff', 'format', '.') }
     'lint' { Invoke-Uv @('run', 'ruff', 'check', '--fix', '.') }
