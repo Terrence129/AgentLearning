@@ -2,7 +2,7 @@
 
 Everything needed to turn nine weeks of agent-engineering labs into **readable, contributable
 SendOS expertise**. This folder is the bridge between the Python course in `agentlab/` and the
-.NET platform the learner interns on (`D:\DevRepo\SendProjects\SendOS\SendOs`).
+.NET platform the learner interns on (`D:\DevRepo\SendProjects\SendOS\SendOs`; on macOS/Linux, substitute your local SendOS checkout path).
 
 > **Living documents — code wins over docs.** These pages were verified against the source on
 > **2026-10-18**. The platform moves faster than its own documentation; when a claim here and the
@@ -104,7 +104,7 @@ answers, and both are how you choose a contribution.
 
 | Artifact | Verified how | Result |
 |---|---|---|
-| SendOS paths cited in `BRIDGE.md` / `READING-ORDER.md` | Every full path checked with `Test-Path` against the source checkout; every `.../` shorthand resolved to an existing file/dir under its app or library subtree; every internal markdown link and anchor checked | ✅ 0 unresolved |
+| SendOS paths cited in `BRIDGE.md` / `READING-ORDER.md` | Every full path checked with `Test-Path` (macOS/Linux: `test -e`) against the source checkout; every `.../` shorthand resolved to an existing file/dir under its app or library subtree; every internal markdown link and anchor checked | ✅ 0 unresolved |
 | `CONCEPT-MAP.md` body | Copied verbatim from `docs/research/05-sendos-concept-map.md` | ✅ byte-for-byte preserved after the wrapper header |
 | `dotnet/AgentBridgeLabs.sln` | `dotnet build` on SDK 10.0.303 | ✅ 0 warnings, 0 errors |
 | Both C# self-tests | `--selftest` run offline | ✅ 11/11 and 15/15 checks pass |

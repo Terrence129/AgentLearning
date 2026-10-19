@@ -3,7 +3,11 @@
 This exists because a learning repository is mostly links, and a dead internal link
 is a broken exercise. Run it after editing docs:
 
+    # Windows (PowerShell)
     .\\.venv\\Scripts\\python.exe scripts/check_links.py
+
+    # macOS / Linux
+    uv run python scripts/check_links.py
 
 Exit code 1 when any link is broken. External links are not fetched (see
 ``--external`` for a best-effort check, which is slow and rate-limited).

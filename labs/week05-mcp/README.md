@@ -52,6 +52,7 @@ contract.
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 # 1. starter red
 .\.venv\Scripts\python.exe -m pytest tests/week05 -m week -q
 
@@ -63,6 +64,21 @@ contract.
 
 # 4. foundation green
 .\.venv\Scripts\python.exe -m pytest -q
+```
+
+```bash
+# macOS / Linux
+# 1. starter red
+uv run pytest tests/week05 -m week -q
+
+# 2. green after implementing
+uv run pytest tests/week05 -m week -q
+
+# 3. lint
+uv run ruff check agentlab/mcp tests/week05
+
+# 4. foundation green
+uv run pytest -q
 ```
 
 Manual acceptance (the learning-plan deliverable): build a small multi-step task

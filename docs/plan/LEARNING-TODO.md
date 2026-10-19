@@ -10,7 +10,7 @@
 | Lab suite (`pytest -m week --collect-only`) | **563 collected — all red on purpose**                                                               |
 | `agentlab doctor`                           | `python ok` · `.env warn` · `provider fail` (expected until week 0 is done)                         |
 | Git                                           | clean tree on `main` at `aacfdc4`                                                                       |
-| Machine                                       | macOS; repo at `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning`; **`uv` is not installed yet** |
+| Machine                                      | macOS; repo at `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning`; `uv` 0.13.1 + `.venv` ready (phase 0 done) |
 
 This file is the **ordered execution list**. It does not replace the curriculum: the lab brief is the build spec, the tests are the definition of done, and [`PROGRESS.md`](PROGRESS.md) is the status tracker. Tick a box only when the evidence exists (a green command, a review note, a commit). Work one week at a time; do not start week N+1 before week N passes all three gates.
 
@@ -31,16 +31,16 @@ This file is the **ordered execution list**. It does not replace the curriculum:
 
 ## 0. Non-negotiable rules (all ten weeks)
 
-- [ ] **Tests are the contract.** Run the suite, read the failing test names and docstrings, then ask for help. Never read `solutions/` until your own tests are green.
-- [ ] **One week at a time.** A week is done only when **G + E + T** pass (§4). One grace debt maximum, cleared within 7 days; two weeks of debt means stop and clear.
-- [ ] **Own only this week's module.** The edit map is in [`SCAFFOLD-CONTRACT.md`](../internals/SCAFFOLD-CONTRACT.md). Do not edit `agentlab/{types,config,trace,budget,pricing,errors,cli}.py`, `agentlab/testing/*`, `agentlab/tools/registry.py`, `tests/test_core.py`, `tests/conftest.py`, `pyproject.toml`, `README.md`, `START-HERE.md`, or the plan docs.
-- [ ] **No live model calls in tests.** Use `MockProvider` and cassettes. Any live run must go through `agentlab.budget.Budget`; keep `AGENTLAB_RUN_BUDGET_USD=0.50`.
-- [ ] **One commit per step.** `week NN: <what moved>` then `week NN: gate green + review`. The git history is portfolio evidence.
-- [ ] **20-minute unstuck rule.** Write what you expected / what happened / what you tried; shrink it to the smallest failing test; ask for a hint, never the answer.
-- [ ] **70 / 20 / 10.** 70% building, 20% reading, 10% reflection. If reading exceeds 30% of a week, cut it.
-- [ ] **Stop at the timer**, leaving a written next step.
-- [ ] **Never paste SendOS source, internal URLs, tenant data, or secrets** into an external model or into this repo. The bridge is abstraction, not copy-paste.
-- [ ] **One tracker only:** [`PROGRESS.md`](PROGRESS.md). Do not maintain a second status system.
+- [X] **Tests are the contract.** Run the suite, read the failing test names and docstrings, then ask for help. Never read `solutions/` until your own tests are green.
+- [X] **One week at a time.** A week is done only when **G + E + T** pass (§4). One grace debt maximum, cleared within 7 days; two weeks of debt means stop and clear.
+- [X] **Own only this week's module.** The edit map is in [`SCAFFOLD-CONTRACT.md`](../internals/SCAFFOLD-CONTRACT.md). Do not edit `agentlab/{types,config,trace,budget,pricing,errors,cli}.py`, `agentlab/testing/*`, `agentlab/tools/registry.py`, `tests/test_core.py`, `tests/conftest.py`, `pyproject.toml`, `README.md`, `START-HERE.md`, or the plan docs.
+- [X] **No live model calls in tests.** Use `MockProvider` and cassettes. Any live run must go through `agentlab.budget.Budget`; keep `AGENTLAB_RUN_BUDGET_USD=0.50`.
+- [X] **One commit per step.** `week NN: <what moved>` then `week NN: gate green + review`. The git history is portfolio evidence.
+- [X] **20-minute unstuck rule.** Write what you expected / what happened / what you tried; shrink it to the smallest failing test; ask for a hint, never the answer.
+- [X] **70 / 20 / 10.** 70% building, 20% reading, 10% reflection. If reading exceeds 30% of a week, cut it.
+- [X] **Stop at the timer**, leaving a written next step.
+- [X] **Never paste SendOS source, internal URLs, tenant data, or secrets** into an external model or into this repo. The bridge is abstraction, not copy-paste.
+- [X] **One tracker only:** [`PROGRESS.md`](PROGRESS.md). Do not maintain a second status system.
 
 ---
 
@@ -71,7 +71,7 @@ Do this today. Target state: `doctor` has **no blocking problem**, the foundatio
 
 ### 2.1 Install the toolchain
 
-- [ ] Install `uv` (macOS / Linux):
+- [X] Install `uv` (macOS / Linux):
   ```bash
   curl -LsSf https://astral.sh/uv/install.sh | sh
   exec "$SHELL" -l        # or open a new terminal
@@ -79,23 +79,24 @@ Do this today. Target state: `doctor` has **no blocking problem**, the foundatio
   ```
 
   Windows equivalent: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`.
-- [ ] `uv python install 3.12`
-- [ ] `uv sync --extra dev` — creates `.venv/` and installs the pinned dev dependencies.
-- [ ] Point your editor at `.venv/bin/python` (VS Code: **Python: Select Interpreter**).
+- [X] `uv python install 3.12`
+- [X] `uv sync --extra dev` — creates `.venv/` and installs the pinned dev dependencies.
+- [X] Or, one command: `./tasks.sh setup` (Windows: `.\tasks.ps1 setup`) — installs Python, syncs deps, creates `.env`, and runs `doctor`.
+- [X] Point your editor at `.venv/bin/python` (VS Code: **Python: Select Interpreter**).
 
 ### 2.2 Configure a provider
 
-- [ ] `cp .env.example .env`
-- [ ] Edit `.env`: set `DEFAULT_PROVIDER=deepseek` and a real `DEEPSEEK_API_KEY=sk-...` (or `OPENAI_API_KEY`). No quotes, no spaces. **Never commit `.env`.**
-- [ ] `uv run python -m agentlab.cli doctor` → every row `ok`/`info`, `provider ok`.
-- [ ] `uv run agentlab --help` works.
+- [X] `cp .env.example .env`
+- [X] Edit `.env`: set `DEFAULT_PROVIDER=deepseek` and a real `DEEPSEEK_API_KEY=sk-...` (or `OPENAI_API_KEY`). No quotes, no spaces. **Never commit `.env`.**
+- [X] `uv run python -m agentlab.cli doctor` → every row `ok`/`info`, `provider ok`.
+- [X] `uv run agentlab --help` works.
 
 ### 2.3 See the starting line
 
-- [ ] `uv run pytest -q` → **30 passed** (the provided foundation; not your work).
-- [ ] `uv run pytest -m week -q` → **563 failed** — the whole curriculum red on purpose.
-- [ ] `uv run pytest tests/week01 -m week -q` → **43 failed**; that is your first lab.
-- [ ] `uv run agentlab chat` → prints the "Week 1 lab not implemented yet" panel (exit code 3). Correct.
+- [X] `uv run pytest -q` → **30 passed** (the provided foundation; not your work).
+- [X] `uv run pytest -m week -q` → **563 failed** — the whole curriculum red on purpose.
+- [X] `uv run pytest tests/week01 -m week -q` → **43 failed**; that is your first lab.
+- [X] `uv run agentlab chat` → prints the "Week 1 lab not implemented yet" panel (exit code 3). Correct.
 
 ### 2.4 Baseline note and ritual
 
@@ -109,7 +110,7 @@ Do this today. Target state: `doctor` has **no blocking problem**, the foundatio
 
 **Week 0 gate:** `doctor` clean · foundation 30 green · one priced live call recorded.
 
-> **macOS vs Windows:** [`tasks.ps1`](../../tasks.ps1) is the Windows task runner. On this machine use the `uv` commands in §3 — they are exactly what `tasks.ps1` wraps. If you install PowerShell 7 (`pwsh`), `./tasks.ps1 week 1` also works, but it is not required.
+> **macOS vs Windows:** there are two equivalent task runners at the repo root — [`tasks.ps1`](../../tasks.ps1) for Windows PowerShell and [`tasks.sh`](../../tasks.sh) for macOS/Linux bash or zsh. They expose the same subcommands. On this machine use `./tasks.sh <task>` or the `uv` commands in §3; they are exactly what the task runners wrap. If you install PowerShell 7 (`pwsh`), `./tasks.ps1 week 1` also works, but it is not required.
 
 ---
 
@@ -119,7 +120,8 @@ Default pytest behaviour excludes lab tests (`addopts = -m "not week"`); the `-m
 
 | Purpose                | macOS (this checkout)                                                                                         | Windows (`tasks.ps1`)    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Setup                  | `uv sync --extra dev`                                                                                       | `.\tasks.ps1 setup`      |
+| Setup                  | `./tasks.sh setup` or `uv sync --extra dev`                                                                | `.\tasks.ps1 setup`      |
+| Any task runner command | `./tasks.sh <task>` (same subcommands)                                                                     | `.\tasks.ps1 <task>`     |
 | Doctor                 | `uv run python -m agentlab.cli doctor`                                                                      | `.\tasks.ps1 doctor`     |
 | Foundation tests       | `uv run pytest -q`                                                                                          | `.\tasks.ps1 test`       |
 | One week's tests       | `uv run pytest tests/week01 -m week -q`                                                                     | `.\tasks.ps1 week 1`     |
@@ -486,7 +488,7 @@ These are not a separate project. Do them in the reading block of the week that 
 - [ ] **Understand the provided primitives before week 2.** Read [`tests/test_core.py`](../../tests/test_core.py), then `agentlab/types.py`, `trace.py`, `budget.py`, `pricing.py`, `config.py`, `errors.py`, `testing/mock.py`, `testing/cassettes.py`, and `tools/registry.py`. Be able to say what each primitive guarantees.
 - [ ] **Read the scaffold contract once.** [`SCAFFOLD-CONTRACT.md`](../internals/SCAFFOLD-CONTRACT.md) explains ownership, the independence rule, and why tests are marked `pytest.mark.week`. It also tells you exactly which files are off-limits.
 - [ ] **Understand the test harness.** Why lab tests carry `pytestmark = pytest.mark.week`, why `pyproject.toml` excludes them by default, and why `-m week` is required. Read `tests/conftest.py` and the fixtures in `tests/week01/conftest.py`.
-- [ ] **Read the repo mechanics.** `pyproject.toml` (deliberately small dependency set + extras), `.github/workflows/ci.yml`, `tasks.ps1` (what the Windows runner wraps), `scripts/check_links.py`, and `scripts/demo_capstone.py`. You should be able to reproduce CI locally with the command in §3.
+- [ ] **Read the repo mechanics.** `pyproject.toml` (deliberately small dependency set + extras), `.github/workflows/ci.yml`, `tasks.ps1` (Windows runner) and `tasks.sh` (macOS/Linux runner), `scripts/check_links.py`, and `scripts/demo_capstone.py`. You should be able to reproduce CI locally with the command in §3.
 - [ ] **Read each concept note just-in-time** (`docs/concepts/01`–`09`), never cover-to-cover. Answer its five questions before and after the lab.
 - [ ] **Read research reports by section, not end-to-end.** Use the appendix mapping in [`LEARNING-PLAN.md`](LEARNING-PLAN.md) §Appendix. Check the uncertainty registers before quoting numbers.
 - [ ] **Use the companion textbook optionally.** [`CHAPTER-MAP.md`](../books/ai-agents-in-depth/CHAPTER-MAP.md) has 6 h / 20 h / 60 h reading paths. It never replaces a lab.

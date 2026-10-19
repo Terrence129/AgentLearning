@@ -73,8 +73,15 @@ Implement everything under `agentlab/guard/`. `errors.py` and `attacks.py` are p
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe -m pytest tests/week08 -m week -q   # must pass
 .\.venv\Scripts\ruff.exe check agentlab/guard                   # must be clean
+```
+
+```bash
+# macOS / Linux
+uv run pytest tests/week08 -m week -q   # must pass
+uv run ruff check agentlab/guard        # must be clean
 ```
 
 Then produce the **lab artifact** (not tested, but the point of the week):

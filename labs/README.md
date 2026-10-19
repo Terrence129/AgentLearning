@@ -25,8 +25,15 @@ One lab per week. Each lab is a **build specification**, not a tutorial: a brief
 5. Only then diff against `solutions/weekNN/`.
 
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 week 1       # run that week's tests
 .\tasks.ps1 labs         # all lab tests (mostly red until you build them)
+```
+
+```bash
+# macOS / Linux
+./tasks.sh week 1        # run that week's tests
+./tasks.sh labs          # all lab tests (mostly red until you build them)
 ```
 
 ## Rules

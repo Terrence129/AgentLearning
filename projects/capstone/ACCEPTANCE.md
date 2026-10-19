@@ -6,14 +6,14 @@ Fill this in as you go. Every row needs **evidence**: a command and its output, 
 
 ## A. Automated gates
 
-| # | Gate | Command | Evidence (paste output summary) | Pass |
-|---|---|---|---|---|
-| A1 | Lab tests green | `.\.venv\Scripts\python.exe -m pytest tests/week09 -m week -q` | | [ ] |
-| A2 | Demo completes offline | `.\.venv\Scripts\python.exe scripts\demo_capstone.py` (exit code) | | [ ] |
-| A3 | Foundation still green | `.\.venv\Scripts\python.exe -m pytest -q` | | [ ] |
-| A4 | Lint clean | `.\.venv\Scripts\ruff.exe check agentlab\capstone agentlab\web tests\week09` | | [ ] |
-| A5 | Web imports without the extra | `.\.venv\Scripts\python.exe -c "from agentlab.web import FASTAPI_AVAILABLE; print(FASTAPI_AVAILABLE)"` | | [ ] |
-| A6 | No live network in tests | grep the week09 tests for `httpx`/`requests`/real URLs | | [ ] |
+| # | Gate | Command (Windows) | Command (macOS / Linux) | Evidence (paste output summary) | Pass |
+|---|---|---|---|---|---|
+| A1 | Lab tests green | `.\.venv\Scripts\python.exe -m pytest tests/week09 -m week -q` | `uv run python -m pytest tests/week09 -m week -q` | | [ ] |
+| A2 | Demo completes offline | `.\.venv\Scripts\python.exe scripts\demo_capstone.py` (exit code) | `uv run python scripts/demo_capstone.py` (exit code) | | [ ] |
+| A3 | Foundation still green | `.\.venv\Scripts\python.exe -m pytest -q` | `uv run python -m pytest -q` | | [ ] |
+| A4 | Lint clean | `.\.venv\Scripts\ruff.exe check agentlab\capstone agentlab\web tests\week09` | `uv run ruff check agentlab/capstone agentlab/web tests/week09` | | [ ] |
+| A5 | Web imports without the extra | `.\.venv\Scripts\python.exe -c "from agentlab.web import FASTAPI_AVAILABLE; print(FASTAPI_AVAILABLE)"` | `uv run python -c "from agentlab.web import FASTAPI_AVAILABLE; print(FASTAPI_AVAILABLE)"` | | [ ] |
+| A6 | No live network in tests | grep the week09 tests for `httpx`/`requests`/real URLs | same `grep` command | | [ ] |
 
 ## B. Behavioural invariants (you write the tests)
 

@@ -43,7 +43,7 @@
 > 2026-10-18). It is the evidence base for the bridge material; the bridge docs cite it by section.
 # SendOS Concept Map — what the platform actually implements, and what to rebuild in miniature
 
-> **Source:** read-only analysis of `D:\DevRepo\SendProjects\SendOS\SendOs` on 2026-10-18. Nothing was modified, built or executed. Paths below are repo-relative to that root.
+> **Source:** read-only analysis of `D:\DevRepo\SendProjects\SendOS\SendOs` on 2026-10-18 (on macOS/Linux, substitute your local SendOS checkout path). Nothing was modified, built or executed. Paths below are repo-relative to that root.
 > **Audience:** an intern contributing to SendOS who needs transferable agent-engineering skill, not familiarity with one codebase.
 > **Method:** read `README.md`, `docs/architecture/*.md`, `docs/implementation-inventory.md`, `docs/runtime-orchestration-flow.md`, `docs/adrs/`, `docs/business/01`, then verified claims against code in `apps/Send.Agent.Runtime`, `apps/Send.Model.Adapter`, `apps/Send.Intel.Server`, `apps/Send.Usage.Collector`, `apps/Send.LowerLayer.Worker`, `libraries/Send.Context.Gateway`, `libraries/Send.Work.Capability`.
 

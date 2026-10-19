@@ -111,7 +111,7 @@ The review is the only place where the week becomes evidence. Without it, week 9
 When the internship explodes or coursework collides — one week in five, realistically — do not skip the week and do not pretend. Do the **minimum viable week** (4–5 hours):
 
 1. **Session 1 (90 min):** read the brief + failing tests; implement the first failing test only.
-2. **Session 2 (90 min):** finish until `.\tasks.ps1 week NN` is green. Nothing else.
+2. **Session 2 (90 min):** finish until `.\tasks.ps1 week NN` (Windows) / `./tasks.sh week NN` (macOS/Linux) is green. Nothing else.
 3. **Gate (60 min):** revise quiz ×10 + teach-back + 5 flashcards. Skip theory, paper, SendOS bridge, and stretch — but record them as debt in the review.
 4. **Emergency 90-minute version** (if even that fails): run the week's tests, fix one test, write one flashcard, log the week as partial in `PROGRESS.md`. A partial week is data; a skipped week with no record is a hole.
 

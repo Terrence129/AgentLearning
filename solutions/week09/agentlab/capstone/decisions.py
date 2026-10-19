@@ -2,7 +2,11 @@
 
 Copy into place with::
 
+    # Windows (PowerShell)
     Copy-Item solutions/week09/* . -Recurse -Force
+
+    # macOS / Linux
+    cp -R solutions/week09/. .
 
 Read this only after your own tests pass, or when you are stuck on a contract
 question -- the point of the lab is the contract, not this file.

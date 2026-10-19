@@ -2,7 +2,11 @@
 
 Copy into place with::
 
+    # Windows (PowerShell)
     Copy-Item solutions/week09/* . -Recurse -Force
+
+    # macOS / Linux
+    cp -R solutions/week09/. .
 """
 
 from __future__ import annotations

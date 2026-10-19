@@ -58,8 +58,15 @@ Implement everything under `agentlab/evals/`. The tests are the specification; t
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe -m pytest tests/week07 -m week -q   # must pass
 .\.venv\Scripts\ruff.exe check agentlab/evals                   # must be clean
+```
+
+```bash
+# macOS / Linux
+uv run pytest tests/week07 -m week -q   # must pass
+uv run ruff check agentlab/evals        # must be clean
 ```
 
 The suite is offline and deterministic; it must finish in a handful of seconds. Then produce the **lab artifact** (not tested, but the point of the week):

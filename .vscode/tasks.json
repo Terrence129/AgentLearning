@@ -4,8 +4,12 @@
     {
       "label": "AgentLab: setup",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "setup"],
+      "command": "./tasks.sh",
+      "args": ["setup"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "setup"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": [],
       "presentation": { "reveal": "always", "panel": "dedicated" }
@@ -13,8 +17,12 @@
     {
       "label": "AgentLab: doctor",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "doctor"],
+      "command": "./tasks.sh",
+      "args": ["doctor"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "doctor"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": [],
       "presentation": { "reveal": "always", "panel": "dedicated" }
@@ -22,8 +30,12 @@
     {
       "label": "AgentLab: test (foundation)",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "test"],
+      "command": "./tasks.sh",
+      "args": ["test"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "test"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "group": { "kind": "test", "isDefault": true },
       "problemMatcher": [],
@@ -32,24 +44,32 @@
     {
       "label": "AgentLab: labs (all week tests)",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "labs"],
+      "command": "./tasks.sh",
+      "args": ["labs"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "labs"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": []
     },
     {
       "label": "AgentLab: week N tests",
       "type": "shell",
-      "command": "powershell",
-      "args": [
-        "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
-        "-File",
-        "${workspaceFolder}/tasks.ps1",
-        "week",
-        "${input:week}"
-      ],
+      "command": "./tasks.sh",
+      "args": ["week", "${input:week}"],
+      "windows": {
+        "command": "powershell",
+        "args": [
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "${workspaceFolder}/tasks.ps1",
+          "week",
+          "${input:week}"
+        ]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": [],
       "presentation": { "reveal": "always", "panel": "dedicated" }
@@ -57,8 +77,12 @@
     {
       "label": "AgentLab: chat (week 1 deliverable)",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "chat"],
+      "command": "./tasks.sh",
+      "args": ["chat"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "chat"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": [],
       "presentation": { "reveal": "always", "panel": "dedicated", "focus": true }
@@ -66,8 +90,12 @@
     {
       "label": "AgentLab: check (what CI runs)",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "check"],
+      "command": "./tasks.sh",
+      "args": ["check"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "check"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "group": "build",
       "problemMatcher": []
@@ -75,8 +103,12 @@
     {
       "label": "AgentLab: format (ruff)",
       "type": "shell",
-      "command": "powershell",
-      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "fmt"],
+      "command": "./tasks.sh",
+      "args": ["fmt"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tasks.ps1", "fmt"]
+      },
       "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": []
     }

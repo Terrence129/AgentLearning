@@ -22,8 +22,15 @@ A paragraph of prose is not a contract: downstream code cannot branch on it, eva
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe -m pytest tests/week03 -m week -q   # all green
 .\.venv\Scripts\ruff.exe check agentlab/schemas
+```
+
+```bash
+# macOS / Linux
+uv run pytest tests/week03 -m week -q   # all green
+uv run ruff check agentlab/schemas
 ```
 
 Lab artifact: `analyze(text) -> Decision` built from `StructuredExtractor` + `DecisionUnion` over ~20 cases (scripted provider is fine), plus a one-paragraph failure-rate report from `extractor.stats` (clean / repaired / failed, `failure_rate`). Offline only — the cassette test in `tests/week03/test_structured.py` shows the replay pattern.

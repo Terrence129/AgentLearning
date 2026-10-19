@@ -18,7 +18,7 @@
 
 ## 2. Gate status (all three must pass — see [`CHECKPOINTS.md`](../docs/plan/CHECKPOINTS.md))
 
-- [ ] **Green:** `.\tasks.ps1 week NN` passes. Output pasted:
+- [ ] **Green:** `.\tasks.ps1 week NN` (Windows) / `./tasks.sh week NN` (macOS/Linux) passes. Output pasted:
   ```
   <paste the pytest summary line>
   ```

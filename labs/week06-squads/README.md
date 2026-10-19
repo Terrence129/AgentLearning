@@ -80,6 +80,7 @@ Implement every `NotImplementedError` in `agentlab/orchestrator/`.
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 # 1. starter red
 .\.venv\Scripts\python.exe -m pytest tests/week06 -m week -q
 
@@ -91,6 +92,21 @@ Implement every `NotImplementedError` in `agentlab/orchestrator/`.
 
 # 4. foundation green
 .\.venv\Scripts\python.exe -m pytest -q
+```
+
+```bash
+# macOS / Linux
+# 1. starter red
+uv run pytest tests/week06 -m week -q
+
+# 2. green after implementing
+uv run pytest tests/week06 -m week -q
+
+# 3. lint
+uv run ruff check agentlab/orchestrator tests/week06
+
+# 4. foundation green
+uv run pytest -q
 ```
 
 Manual acceptance (the learning-plan deliverable): a miniature "should we

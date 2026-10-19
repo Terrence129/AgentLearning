@@ -4,9 +4,9 @@
 
 ## Pre-demo (10 minutes before recording)
 
-- [ ] `.\.venv\Scripts\python.exe -m pytest tests/week09 -m week -q` → green.
-- [ ] `.\.venv\Scripts\python.exe scripts\demo_capstone.py` → exits 0 (capture the output).
-- [ ] `.\.venv\Scripts\python.exe -m pytest -q` → foundation green.
+- [ ] `.\.venv\Scripts\python.exe -m pytest tests/week09 -m week -q` (Windows) · `uv run python -m pytest tests/week09 -m week -q` (macOS / Linux) → green.
+- [ ] `.\.venv\Scripts\python.exe scripts\demo_capstone.py` (Windows) · `uv run python scripts/demo_capstone.py` (macOS / Linux) → exits 0 (capture the output).
+- [ ] `.\.venv\Scripts\python.exe -m pytest -q` (Windows) · `uv run python -m pytest -q` (macOS / Linux) → foundation green.
 - [ ] Terminal font size ≥ 14; working directory is the repo root; no secrets visible in `.env` on screen.
 - [ ] Close chat windows / notifications. One clean terminal + one editor tab.
 - [ ] If showing the UI: install the web extra *before* recording, start the server in a second pane.

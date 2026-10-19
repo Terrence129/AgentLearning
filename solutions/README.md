@@ -11,7 +11,13 @@ solutions/week06/agentlab/orchestrator/...
 Apply a solution (it copies over your work — this is a last resort):
 
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 solution 1
+```
+
+```bash
+# macOS / Linux
+./tasks.sh solution 1
 ```
 
 ## Policy: do not open these until your tests pass

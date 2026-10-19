@@ -15,7 +15,11 @@ How to run it
 -------------
 ::
 
+    # Windows (PowerShell)
     .\\.venv\\Scripts\\python.exe scripts\\demo_capstone.py
+
+    # macOS / Linux
+    uv run python scripts/demo_capstone.py
 
 Before the capstone is implemented the script stops at the first unimplemented
 seam and prints exactly what is missing. That is expected: the demo is a
@@ -78,6 +82,7 @@ The capstone is built in three stages; this demo completes when all three exist:
   3. agentlab/capstone/platform.py   action_digest + submit_goal / propose_action / approve / execute
 
 Check your progress:  .\\.venv\\Scripts\\python.exe -m pytest tests/week09 -m week -q
+                      (macOS / Linux: uv run pytest tests/week09 -m week -q)
 Lab brief:            labs/week09-capstone/README.md
 """
 

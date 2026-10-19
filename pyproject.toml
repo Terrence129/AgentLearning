@@ -45,7 +45,8 @@ packages = ["agentlab"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 # Lab tests (tests/weekNN) start red on purpose, so they are excluded unless
-# you ask for them: `pytest -m week`, or `.\tasks.ps1 week 2`.
+# you ask for them: `pytest -m week`, `.\tasks.ps1 week 2` (Windows), or
+# `./tasks.sh week 2` (macOS/Linux).
 addopts = '-q --strict-markers -m "not week" --basetemp=.pytest_tmp'
 markers = [
     "network: calls a real model provider; skipped unless AGENTLAB_ALLOW_NETWORK=1",

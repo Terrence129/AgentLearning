@@ -28,7 +28,7 @@
 
 - **Time:** 8–12 h/week alongside the SendOS internship and NUS coursework. Realistic pattern: Tue 20:00 (2 h), Thu 20:00 (2 h), Sat 09:00–13:00 (3–4 h). Some weeks will be minimum-viable weeks (see [`WEEKLY-RHYTHM.md`](WEEKLY-RHYTHM.md) §8).
 - **Budget:** DeepSeek primary (cheap, high-volume labs), OpenAI secondary (comparison labs). Total model spend target **under $5** for the whole curriculum; `AGENTLAB_RUN_BUDGET_USD=0.50` default stays on.
-- **Machine:** Windows 11; Windows PowerShell 5.1 (PowerShell 7 recommended, both work); Python 3.12 via `uv`; .NET 10 SDK available for the bridge labs. Repo is `D:\DevRepo\MyProjects\AgentLearning`.
+- **Machine:** Windows 11 (work/reference machine); Windows PowerShell 5.1 (PowerShell 7 recommended, both work); Python 3.12 via `uv`; .NET 10 SDK available for the bridge labs. The current checkout for this run is macOS at `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning`; commands are documented for both platforms.
 - **Context switching:** internship work is `.NET`; the curriculum is Python. The plan deliberately uses Python for learning (sample density) and C# only for the SendOS bridge.
 
 ## 4. Working preferences and strengths to exploit
@@ -42,11 +42,12 @@
 
 | Item | Value |
 |---|---|
-| Repo root | `D:\DevRepo\MyProjects\AgentLearning` |
+| Repo root | `D:\DevRepo\MyProjects\AgentLearning` (Windows) · `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning` (current macOS checkout) |
 | Python | 3.12 (uv-managed) |
 | Providers | `DEFAULT_PROVIDER=deepseek` (DeepSeek API); `OPENAI_API_KEY` optional |
 | Budget guard | `AGENTLAB_RUN_BUDGET_USD` (default 0.50) — never disable |
-| Tests | `.\tasks.ps1 test` (all), `.\tasks.ps1 week NN` (one week) |
+| Tests | `.\tasks.ps1 test` (all, Windows) / `./tasks.sh test` (macOS/Linux); `.\tasks.ps1 week NN` / `./tasks.sh week NN` (one week) |
+| Task runner | `tasks.ps1` (Windows PowerShell) · `tasks.sh` (macOS/Linux bash or zsh) |
 | Labs | `labs/weekNN-*/README.md` — the brief |
 | Gates | [`CHECKPOINTS.md`](CHECKPOINTS.md) — Green / Explain / Transfer |
 | Tracker | [`PROGRESS.md`](PROGRESS.md) — updated every Saturday |

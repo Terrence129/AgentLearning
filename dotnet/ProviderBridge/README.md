@@ -13,6 +13,7 @@ read `../Bridge.Shared/Providers/` in this order: `ChatCompletionsClient.cs` →
 ## Run
 
 ```powershell
+# Windows (PowerShell)
 # 1. offline mechanism checks (no key, no network) — THE GATE
 dotnet run --project dotnet/ProviderBridge -- --selftest
 
@@ -21,6 +22,20 @@ dotnet run --project dotnet/ProviderBridge -- --mock
 dotnet run --project dotnet/ProviderBridge -- --mock --stream
 
 # 3. live (needs BRIDGE_API_KEY; see ../README.md for env vars)
+dotnet run --project dotnet/ProviderBridge -- --stream --prompt "Why does streaming exist?"
+```
+
+```bash
+# macOS / Linux
+# 1. offline mechanism checks (no key, no network) — THE GATE
+dotnet run --project dotnet/ProviderBridge -- --selftest
+
+# 2. offline demo: scripted 429 -> success, then a streamed response
+dotnet run --project dotnet/ProviderBridge -- --mock
+dotnet run --project dotnet/ProviderBridge -- --mock --stream
+
+# 3. live (needs BRIDGE_API_KEY; see ../README.md for env vars; use
+#    export BRIDGE_API_KEY="sk-..." on macOS/Linux)
 dotnet run --project dotnet/ProviderBridge -- --stream --prompt "Why does streaming exist?"
 ```
 

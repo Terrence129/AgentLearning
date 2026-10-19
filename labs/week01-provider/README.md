@@ -7,7 +7,7 @@ Most agent bugs are blamed on the model but live in the adapter: a tool call who
 ## 2. Prerequisites & time budget
 
 - **8–10 hours** (build sessions ~5 h, reading ~2 h, SendOS bridge + review ~2 h).
-- Foundation green: `.\tasks.ps1 test` runs `tests/` (not `tests/week*`) and must pass.
+- Foundation green: `.\tasks.ps1 test` (Windows) / `./tasks.sh test` (macOS/Linux) runs `tests/` (not `tests/week*`) and must pass.
 - Read first: [`docs/concepts/01-agent-loop.md`](../../docs/concepts/01-agent-loop.md) (25 min), [`docs/research/01-agent-architecture-sota.md`](../../docs/research/01-agent-architecture-sota.md) §1.3 and §1.6, [`docs/research/02-frameworks-protocols.md`](../../docs/research/02-frameworks-protocols.md) §3.
 - You need no API key for the tests. One live call is recommended for the lab artifact (cost cap: a fraction of a cent).
 
@@ -27,11 +27,18 @@ Definition of done includes the equivalence contract: `assemble_stream(provider.
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe -m pytest tests/week01 -m week -q   # all green
 .\.venv\Scripts\ruff.exe check agentlab/providers/openai_compat.py
 ```
 
-Optional live artifact (needs `.env` with a provider key): run `.\tasks.ps1 chat`, complete one streaming turn, and confirm the printed per-turn token/cost line. Compare `stream` vs `--no-stream` answers for the same prompt.
+```bash
+# macOS / Linux
+uv run pytest tests/week01 -m week -q   # all green
+uv run ruff check agentlab/providers/openai_compat.py
+```
+
+Optional live artifact (needs `.env` with a provider key): run `.\tasks.ps1 chat` (Windows) / `./tasks.sh chat` (macOS/Linux), complete one streaming turn, and confirm the printed per-turn token/cost line. Compare `stream` vs `--no-stream` answers for the same prompt.
 
 ## 5. Hints (read in order; stop as soon as you are unblocked)
 

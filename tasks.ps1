@@ -1,5 +1,7 @@
 # AgentLab task runner (Windows / PowerShell)
 #
+# macOS / Linux: use ./tasks.sh - it exposes the same subcommands.
+#
 # Usage:
 #   .\tasks.ps1 setup
 #   .\tasks.ps1 test
@@ -27,7 +29,7 @@ Set-Location $Root
 function Get-Uv {
     $uv = Get-Command uv -ErrorAction SilentlyContinue
     if (-not $uv) {
-        throw "uv is not installed. Install it with: powershell -c `"irm https://astral.sh/uv/install.ps1 | iex`""
+        throw "uv is not installed. Windows: powershell -c `"irm https://astral.sh/uv/install.ps1 | iex`". macOS/Linux: curl -LsSf https://astral.sh/uv/install.sh | sh"
     }
     return $uv.Source
 }
@@ -72,6 +74,8 @@ AgentLab tasks
   .\tasks.ps1 chat           Start the terminal chat (week 1 deliverable)
   .\tasks.ps1 solution 1     Copy the reference solution for week 1 into place
   .\tasks.ps1 clean          Remove caches and local runtime artifacts
+
+  macOS / Linux: use ./tasks.sh - it exposes the same subcommands.
 
 First time here? Read START-HERE.md, then run: .\tasks.ps1 setup
 "@

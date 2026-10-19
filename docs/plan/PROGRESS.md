@@ -35,7 +35,7 @@ Copy one block per week when the week starts; tick during the Saturday review.
 
 ### Week 0 — Setup & baseline
 
-- [ ] `.\tasks.ps1 setup` completed; `doctor` clean
+- [ ] `.\tasks.ps1 setup` (Windows) / `./tasks.sh setup` (macOS/Linux) completed; `doctor` clean
 - [ ] `.env` has `DEFAULT_PROVIDER=deepseek` + `DEEPSEEK_API_KEY`
 - [ ] Foundation tests green; week tests red (expected)
 - [ ] One live call recorded with tokens / latency / cost in `notes/week00-baseline.md`
@@ -47,7 +47,7 @@ Copy one block per week when the week starts; tick during the Saturday review.
 - [ ] Brief read (`labs/weekNN-*/README.md`)
 - [ ] Failing tests read **before** coding
 - [ ] Build complete against the owned module only
-- [ ] `.\tasks.ps1 week NN` green
+- [ ] `.\tasks.ps1 week NN` (Windows) / `./tasks.sh week NN` (macOS/Linux) green
 - [ ] Quiz NN taken closed book: ____/10
 - [ ] 150-word teach-back written without notes
 - [ ] SendOS bridge note (matches / differs / would change)

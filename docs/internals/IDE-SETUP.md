@@ -4,8 +4,8 @@
 
 Why VS Code for this specific repo:
 
-- **Reads the failing tests like source.** The whole curriculum is "open the test, satisfy the contract"; VS Code's Test Explorer and Ctrl+click navigation are the fastest way to jump between `tests/weekNN/` and `agentlab/`.
-- **Integrated terminal for the task runner.** `.\tasks.ps1 week N`, `chat`, `doctor` all run in one panel, so you never lose context.
+- **Reads the failing tests like source.** The whole curriculum is "open the test, satisfy the contract"; VS Code's Test Explorer and Ctrl+click (Cmd+click on macOS) navigation are the fastest way to jump between `tests/weekNN/` and `agentlab/`.
+- **Integrated terminal for the task runner.** `.\tasks.ps1 week N` (Windows) / `./tasks.sh week N` (macOS/Linux), `chat`, `doctor` all run in one panel, so you never lose context.
 - **First-class Markdown** for the 65+ docs, lab briefs and the book chapter map, with link validation.
 - **Polyglot.** The same window covers the Python labs, the C# bridge labs (`dotnet/`), and the YAML/TOML/Markdown around them.
 - **Already shipped config.** [`.vscode/`](../../.vscode/) sets the interpreter, test discovery, formatter, tasks and debugger for you.
@@ -16,7 +16,7 @@ Why VS Code for this specific repo:
 
 | Area | Setting | Effect |
 |---|---|---|
-| Interpreter | `.venv/Scripts/python.exe` | Python 3.12 with the project installed editable |
+| Interpreter | `.venv/bin/python` (macOS/Linux) · `.venv/Scripts/python.exe` (Windows) | Python 3.12 with the project installed editable |
 | Tests | pytest on `tests/` | Test Explorer shows **all** tests; the lab weeks are red until you build them — expected |
 | Formatting | Ruff (format + import sort on save) | Matches CI (`ruff format --check`) |
 | Tasks | `Terminal → Run Task…` | setup, doctor, foundation tests, all lab tests, **week N** (prompts for N), chat, check, format |
@@ -26,16 +26,16 @@ Why VS Code for this specific repo:
 
 ## 2. First open (3 minutes)
 
-1. **File → Open Folder** → `D:\DevRepo\MyProjects\AgentLearning` (not the parent folder — the workspace config lives here).
-2. Accept the **recommended extensions** prompt ([`.vscode/extensions.json`](../../.vscode/extensions.json)): Ruff, PowerShell, Markdown All in One, Error Lens, GitLens, Todo Tree, Code Spell Checker.
-3. `Ctrl+Shift+P` → **Python: Select Interpreter** → `.venv\Scripts\python.exe` (usually auto-detected).
-4. `Ctrl+Shift+P` → **Tasks: Run Task** → **AgentLab: doctor**. It should report the placeholder-key failure until you edit `.env`.
-5. `Ctrl+Shift+P` → **Python: Configure Tests** → **pytest** → **`tests`** (only if discovery did not start automatically).
+1. **File → Open Folder** → the repo root: `D:\DevRepo\MyProjects\AgentLearning` on Windows, `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning` on this Mac (not the parent folder — the workspace config lives here).
+2. Accept the **recommended extensions** prompt ([`.vscode/extensions.json`](../../.vscode/extensions.json)): Ruff, PowerShell, Markdown All in One, Error Lens, GitLens, Todo Tree, Code Spell Checker. PowerShell is Windows-only; the rest are useful on both.
+3. `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (macOS) → **Python: Select Interpreter** → `.venv\Scripts\python.exe` (Windows) / `.venv/bin/python` (macOS/Linux), usually auto-detected.
+4. `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (macOS) → **Tasks: Run Task** → **AgentLab: doctor**. It should report the placeholder-key failure until you edit `.env`.
+5. `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (macOS) → **Python: Configure Tests** → **pytest** → **`tests`** (only if discovery did not start automatically).
 6. Open the Testing sidebar; you should see `tests/test_core.py` green (30) and `tests/weekNN` red.
 
 Useful defaults while working a lab:
 
-- **Run the current test file:** open it, press the ▶ gutter icon, or `Ctrl+Shift+P → Tasks: Run Task → AgentLab: week N tests`.
+- **Run the current test file:** open it, press the ▶ gutter icon, or `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (macOS) → `Tasks: Run Task` → `AgentLab: week N tests`.
 - **Debug a failing test:** open the test file → Run and Debug → *Debug: current test file* → F9 on the assertion.
 - **Re-run only the last failure:** Testing sidebar → the red test → rerun.
 
@@ -43,11 +43,11 @@ Useful defaults while working a lab:
 
 PyCharm is a legitimate choice (and free with your student licence), especially if you already live in IntelliJ keymaps:
 
-1. Open the folder as a project; set the interpreter to `.venv\Scripts\python.exe`.
+1. Open the folder as a project; set the interpreter to `.venv\Scripts\python.exe` (Windows) / `.venv/bin/python` (macOS/Linux).
 2. Mark `agentlab/` as a **Sources Root** (so imports resolve as `agentlab.*`).
 3. Settings → Tools → Python Integrated Tools → default test runner **pytest**.
 4. Create a pytest run configuration: target `tests`, working directory = repo root, additional arguments `-m week` for lab weeks.
-5. Set the formatter to Ruff (plugin) or leave formatting to `.\tasks.ps1 fmt`.
+5. Set the formatter to Ruff (plugin) or leave formatting to `.\tasks.ps1 fmt` (Windows) / `./tasks.sh fmt` (macOS/Linux).
 
 Do **not** use PyCharm's built-in "install package" prompts against this project — dependencies are managed by `uv sync`; let the task runner own the environment.
 
@@ -69,12 +69,13 @@ Practical setup: create a VS Code **Profile** named *AgentLab Study* with the AI
 
 | Symptom | Fix |
 |---|---|
-| "No Python interpreter selected" | `Ctrl+Shift+P` → Python: Select Interpreter → `.venv\Scripts\python.exe`. If `.venv` is missing, run `.\tasks.ps1 setup`. |
+| "No Python interpreter selected" | `Ctrl+Shift+P` (Windows) / `Cmd+Shift+P` (macOS) → Python: Select Interpreter → `.venv\Scripts\python.exe` (Windows) / `.venv/bin/python` (macOS/Linux). If `.venv` is missing, run `.\tasks.ps1 setup` (Windows) / `./tasks.sh setup` (macOS/Linux). |
 | Tests not discovered | Python: Configure Tests → pytest → `tests`; check output panel *Python* for errors. |
 | `pytest` runs the wrong Python | Integrated terminal may be outside the venv — the task runner always uses `uv run`, so prefer `Terminal → Run Task`. |
-| PowerShell says execution policy blocks scripts | The tasks pass `-ExecutionPolicy Bypass`; if you run `.\tasks.ps1` manually and it is blocked, use `powershell -ExecutionPolicy Bypass -File .\tasks.ps1 ...`. |
-| Ruff extension does nothing | Install `charliermarsh.ruff`; the repo also exposes `.\tasks.ps1 fmt` as a fallback. |
-| Markdown links flagged | Run `python scripts/check_links.py` — the source of truth for link validity. |
+| PowerShell says execution policy blocks scripts | Windows only: the tasks pass `-ExecutionPolicy Bypass`; if you run `.\tasks.ps1` manually and it is blocked, use `powershell -ExecutionPolicy Bypass -File .\tasks.ps1 ...`. |
+| `./tasks.sh: Permission denied` | macOS/Linux only: run `chmod +x tasks.sh` in the repo root. |
+| Ruff extension does nothing | Install `charliermarsh.ruff`; the repo also exposes `.\tasks.ps1 fmt` (Windows) / `./tasks.sh fmt` (macOS/Linux) as a fallback. |
+| Markdown links flagged | Run `uv run python scripts/check_links.py` — the source of truth for link validity. |
 | VS Code is slow / indexing huge folders | Check that `.venv`, `bin`, `obj` are excluded (they are by default in this workspace). |
 
 ## 6. VS Code extensions — what is actually useful here
@@ -85,4 +86,4 @@ Recommended additions (the workspace prompt will offer them): **Ruff**, **PowerS
 
 ---
 
-**Bottom line:** open the folder in VS Code, accept the extension recommendations, select `.venv`, and use `Terminal → Run Task → AgentLab: week 1 tests`. Rider/Visual Studio stay for SendOS `.NET`; the C# bridge labs in [`dotnet/`](../../dotnet/README.md) build from the terminal either way.
+**Bottom line:** open the folder in VS Code, accept the extension recommendations, select the `.venv` interpreter (`.venv/bin/python` on macOS/Linux, `.venv\Scripts\python.exe` on Windows), and use `Terminal → Run Task → AgentLab: week 1 tests`. Rider/Visual Studio stay for SendOS `.NET`; the C# bridge labs in [`dotnet/`](../../dotnet/README.md) build from the terminal either way.

@@ -53,6 +53,19 @@ dotnet/
   clean `~/.nuget` cache succeeds with 0 warnings / 0 errors).
 
 ```powershell
+# Windows (PowerShell)
+# from the repo root
+dotnet build dotnet/AgentBridgeLabs.sln
+
+# offline mechanism checks (no API key, no network) — these are the gates
+dotnet run --project dotnet/ProviderBridge           -- --selftest
+dotnet run --project dotnet/ProviderBridge           -- --mock --stream
+dotnet run --project dotnet/StructuredDecisionBridge -- --selftest
+dotnet run --project dotnet/StructuredDecisionBridge -- --mock
+```
+
+```bash
+# macOS / Linux
 # from the repo root
 dotnet build dotnet/AgentBridgeLabs.sln
 
@@ -66,9 +79,18 @@ dotnet run --project dotnet/StructuredDecisionBridge -- --mock
 Live runs (optional, and the only part that costs money):
 
 ```powershell
+# Windows (PowerShell)
 $env:BRIDGE_API_KEY   = "sk-..."          # or OPENAI_API_KEY / DEEPSEEK_API_KEY
 # $env:BRIDGE_BASE_URL = "https://api.deepseek.com/v1"   # default
 # $env:BRIDGE_MODEL    = "deepseek-chat"                 # default
+dotnet run --project dotnet/ProviderBridge -- --stream --prompt "Explain SSE in one sentence"
+```
+
+```bash
+# macOS / Linux
+export BRIDGE_API_KEY="sk-..."          # or OPENAI_API_KEY / DEEPSEEK_API_KEY
+# export BRIDGE_BASE_URL="https://api.deepseek.com/v1"   # default
+# export BRIDGE_MODEL="deepseek-chat"                 # default
 dotnet run --project dotnet/ProviderBridge -- --stream --prompt "Explain SSE in one sentence"
 ```
 

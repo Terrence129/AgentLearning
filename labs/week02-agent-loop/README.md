@@ -22,8 +22,15 @@ An agent is a model using tools in a loop — and almost every "the agent went c
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe -m pytest tests/week02 -m week -q   # all green
 .\.venv\Scripts\ruff.exe check agentlab/loop agentlab/tools/builtin.py
+```
+
+```bash
+# macOS / Linux
+uv run pytest tests/week02 -m week -q   # all green
+uv run ruff check agentlab/loop agentlab/tools/builtin.py
 ```
 
 The five golden tasks are in `tests/week02/test_runner.py`: arithmetic, file read, multi-step edit, graceful tool error, budget stop. Manual artifact: run the loop once against a real provider with `build_builtin_tools(tmp_dir)` and a `Tracer` whose `JsonlSink` writes `traces/week02-run.jsonl`; read it back with `agentlab.trace.load_trace` and check that every `tool_call` has a matching `tool_result` with the same `tool_call_id`.

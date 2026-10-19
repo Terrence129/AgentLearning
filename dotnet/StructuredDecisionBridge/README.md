@@ -14,6 +14,7 @@ Timebox: **30 minutes**. Run `--selftest` first, then `--mock`, then read
 ## Run
 
 ```powershell
+# Windows (PowerShell)
 # 1. offline mechanism checks (no key, no network) — THE GATE
 dotnet run --project dotnet/StructuredDecisionBridge -- --selftest
 
@@ -21,6 +22,19 @@ dotnet run --project dotnet/StructuredDecisionBridge -- --selftest
 dotnet run --project dotnet/StructuredDecisionBridge -- --mock
 
 # 3. live (needs BRIDGE_API_KEY; JSON mode requested, never trusted)
+dotnet run --project dotnet/StructuredDecisionBridge -- --prompt "Why did revenue fall, and what should we do?"
+```
+
+```bash
+# macOS / Linux
+# 1. offline mechanism checks (no key, no network) — THE GATE
+dotnet run --project dotnet/StructuredDecisionBridge -- --selftest
+
+# 2. offline repair demo: chart -> broken schema -> over budget -> valid
+dotnet run --project dotnet/StructuredDecisionBridge -- --mock
+
+# 3. live (needs BRIDGE_API_KEY; JSON mode requested, never trusted; use
+#    export BRIDGE_API_KEY="sk-..." on macOS/Linux)
 dotnet run --project dotnet/StructuredDecisionBridge -- --prompt "Why did revenue fall, and what should we do?"
 ```
 

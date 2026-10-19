@@ -36,7 +36,8 @@ FASTAPI_AVAILABLE: bool = FastAPI is not None
 
 INSTALL_HINT = (
     "FastAPI is not installed. Install the optional web extra from the repo root:  "
-    r'.\.venv\Scripts\python.exe -m pip install -e ".[web]"'
+    "uv sync --extra web  (all platforms; Windows pip fallback: "
+    r'.\.venv\Scripts\python.exe -m pip install -e ".[web]")'
 )
 
 INDEX_HTML = """<!doctype html>

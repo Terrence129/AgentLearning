@@ -70,7 +70,7 @@ It never replaces a lab. If the week is short, read nothing and ship green tests
 
 **Objective:** a working environment and an honest baseline.
 
-- Run `.\tasks.ps1 setup`; fix `doctor` until clean.
+- Run `.\tasks.ps1 setup` (Windows) / `./tasks.sh setup` (macOS/Linux); fix `doctor` until clean.
 - Run `pytest` (foundation green) and `pytest -m week` (all lab tests red — expected).
 - Make one live call with a throwaway script; record tokens and cost in `notes/week00-baseline.md`, and record latency from the CLI's wall-clock/elapsed time (the provider adapter returns `Usage` only — latency is measured by the caller's span and, from week 2, by the `model_call` trace event's `duration_ms`).
 - Write your baseline answers: what is a token, why does streaming exist, what can go wrong in a retry.

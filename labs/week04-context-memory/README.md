@@ -23,7 +23,7 @@ forgets the one constraint that mattered ("never refund above $500").
 ## 2. Prerequisites & time budget
 
 - **Time:** 10–12 h (plan: build ≈ 7 h, reading ≈ 2 h, review ≈ 2 h).
-- **Must be green before starting:** `.\tasks.ps1 test` (the provided foundation).
+- **Must be green before starting:** `.\tasks.ps1 test` (Windows) / `./tasks.sh test` (macOS/Linux) — the provided foundation.
 - **Reading:** `docs/research/01-agent-architecture-sota.md` §3 and §4 (read
   §3.1 twice), plus the Anthropic context-management article linked there.
 - **Python:** standard library only — no numpy, no embeddings API, no network.
@@ -49,6 +49,7 @@ survives.
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 # 1. starter is red (it should fail loudly with NotImplementedError)
 .\.venv\Scripts\python.exe -m pytest tests/week04 -m week -q
 
@@ -60,6 +61,21 @@ survives.
 
 # 4. the foundation must stay green
 .\.venv\Scripts\python.exe -m pytest -q
+```
+
+```bash
+# macOS / Linux
+# 1. starter is red (it should fail loudly with NotImplementedError)
+uv run pytest tests/week04 -m week -q
+
+# 2. implement, then re-run until green
+uv run pytest tests/week04 -m week -q
+
+# 3. lint (line length 110)
+uv run ruff check agentlab/context tests/week04
+
+# 4. the foundation must stay green
+uv run pytest -q
 ```
 
 Optional (the week's lab deliverable, described in the learning plan): run a

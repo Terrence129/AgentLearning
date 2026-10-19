@@ -44,18 +44,44 @@ The full research basis — 5 deep-research reports, ~20k words with citations �
 
 ## Quickstart
 
+Both task runners expose the same subcommands: `tasks.ps1` on Windows (PowerShell), `tasks.sh` on macOS/Linux (bash or zsh).
+
+**Windows (PowerShell):**
+
 ```powershell
+# Windows (PowerShell)
 # from D:\DevRepo\MyProjects\AgentLearning
 .\tasks.ps1 setup        # uv + Python 3.12 + deps + .env + doctor
 ```
 
+**macOS / Linux:**
+
+```bash
+# macOS / Linux
+# from the repo root
+./tasks.sh setup         # uv + Python 3.12 + deps + .env + doctor
+```
+
 Then:
 
+**Windows (PowerShell):**
+
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 doctor       # check toolchain, keys, dirs
 .\tasks.ps1 test         # full suite (foundation should be green; week labs start red on purpose)
 .\tasks.ps1 week 1       # only week 1's tests
 .\tasks.ps1 chat         # week 1 deliverable once implemented
+```
+
+**macOS / Linux:**
+
+```bash
+# macOS / Linux
+./tasks.sh doctor
+./tasks.sh test
+./tasks.sh week 1
+./tasks.sh chat
 ```
 
 Read **[START-HERE.md](START-HERE.md)** first — it is a 90-minute on-ramp, not a manual.
@@ -67,6 +93,7 @@ Read **[START-HERE.md](START-HERE.md)** first — it is a 90-minute on-ramp, not
 | Path | What lives there |
 |---|---|
 | [`START-HERE.md`](START-HERE.md) | 90-minute onboarding: setup → first failing test → first fix |
+| [`tasks.ps1`](tasks.ps1) / [`tasks.sh`](tasks.sh) | Cross-platform task runners: setup, doctor, tests, week N, chat, lint |
 | [`docs/plan/LEARNING-PLAN.md`](docs/plan/LEARNING-PLAN.md) | The master 9-week plan: goals, hours, deliverables, exit gates |
 | [`docs/plan/WEEKLY-RHYTHM.md`](docs/plan/WEEKLY-RHYTHM.md) | How to study efficiently (retrieval practice, timeboxing, spaced repetition) |
 | [`docs/plan/CHECKPOINTS.md`](docs/plan/CHECKPOINTS.md) | Weekly gates, rubrics, and what "done" means |
@@ -146,7 +173,7 @@ High-value pairings (details in [`docs/sendos/BRIDGE.md`](docs/sendos/BRIDGE.md)
 
 ## Requirements
 
-- Windows 11 + PowerShell (Windows PowerShell 5.1 works; PowerShell 7 recommended) — also works on macOS/Linux with `uv` directly
+- Windows 11 + PowerShell (Windows PowerShell 5.1 works; PowerShell 7 recommended), or macOS/Linux with bash or zsh. Both platforms use `uv` for Python; the task runners are `tasks.ps1` (Windows) and `tasks.sh` (macOS/Linux).
 - Python 3.12 (installed automatically by `uv`)
 - At least one provider key: **DeepSeek** or **OpenAI** (both configured in `.env.example`)
 - ~$2–5 of model spend for the whole curriculum (most labs run on mocks)

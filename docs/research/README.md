@@ -31,4 +31,4 @@ Reports are valuable because they are **dated**, not because they are eternal.
 
 ## Provenance
 
-Produced by parallel research agents with primary-source verification (spec sites, vendor docs, arXiv, official blogs, and the SendOS repository at `D:\DevRepo\SendProjects\SendOS\SendOs`). SendOS analysis was read-only; the platform was not built or executed.
+Produced by parallel research agents with primary-source verification (spec sites, vendor docs, arXiv, official blogs, and the SendOS repository at `D:\DevRepo\SendProjects\SendOS\SendOs`; on macOS/Linux, substitute your local SendOS checkout path). SendOS analysis was read-only; the platform was not built or executed.

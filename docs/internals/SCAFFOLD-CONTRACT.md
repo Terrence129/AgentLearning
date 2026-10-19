@@ -73,7 +73,7 @@ def resolve(self, request: FooRequest) -> FooResult:
 solutions/weekNN/agentlab/<module path>.py
 ```
 
-This mirrors the repo root, so `.\tasks.ps1 solution N` can copy `solutions/weekNN/*` over the root. Also include `solutions/weekNN/NOTES.md` only if the approach is non-obvious.
+This mirrors the repo root, so `.\tasks.ps1 solution N` (Windows) / `./tasks.sh solution N` (macOS/Linux) can copy `solutions/weekNN/*` over the root. Also include `solutions/weekNN/NOTES.md` only if the approach is non-obvious.
 
 The solution must make `pytest tests/weekNN -m week` fully green.
 
@@ -82,6 +82,8 @@ The solution must make `pytest tests/weekNN -m week` fully green.
 ## 6. Verification procedure (every builder must actually run this)
 
 ```powershell
+# Windows (PowerShell)
+
 # 1. starter must be red
 .\.venv\Scripts\python.exe -m pytest tests/weekNN -m week -q
 
@@ -94,6 +96,23 @@ Copy-Item solutions/weekNN/* . -Recurse -Force
 
 # 4. restore starter
 Move-Item agentlab\<path>.starter agentlab\<path> -Force
+```
+
+```bash
+# macOS / Linux (bash or zsh)
+
+# 1. starter must be red
+uv run pytest tests/weekNN -m week -q
+
+# 2. back up the starter, apply the solution
+cp -R agentlab/<path> agentlab/<path>.starter
+cp -R solutions/weekNN/. .
+
+# 3. solution must be green
+uv run pytest tests/weekNN -m week -q
+
+# 4. restore starter
+mv agentlab/<path>.starter agentlab/<path>
 ```
 
 If step 1 passes or step 3 fails, the scaffold is wrong — fix it before reporting.

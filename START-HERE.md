@@ -7,9 +7,7 @@ Do not read the whole learning plan first — you will lose momentum. Set up, se
 
 ## 1. What you are getting (2 min)
 
-You are an experienced full-stack engineer (Java/C#, React, AWS) who has called LLM APIs but not built
-agent systems. Over ~10 weeks you will build a small agent platform from scratch, in Python, driven by
-tests — and simultaneously learn to read the `.NET` agent platform you work on (SendOS) with expert eyes.
+You are an experienced full-stack engineer (Java/C#, React, AWS) who has called LLM APIs but not built agent systems. Over ~10 weeks you will build a small agent platform from scratch, in Python, driven by tests — and simultaneously learn to read the `.NET` agent platform you work on (SendOS) with expert eyes.
 
 The rule that makes this work: **you write code every week, and a failing test suite defines the finish line.**
 
@@ -17,13 +15,24 @@ The rule that makes this work: **you write code every week, and a failing test s
 
 ## 2. Setup (15 min)
 
-Open a PowerShell terminal (Windows PowerShell 5.1 or PowerShell 7) in `D:\DevRepo\MyProjects\AgentLearning`.
+Open a terminal in the repo root. On this macOS checkout that is `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning`; on Windows it is `D:\DevRepo\MyProjects\AgentLearning`.
+
+**Windows (PowerShell 5.1 or 7):**
 
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 setup
 ```
 
+**macOS / Linux (bash or zsh):**
+
+```bash
+# macOS / Linux
+./tasks.sh setup
+```
+
 This will:
+
 1. install Python 3.12 via `uv`,
 2. create `.venv` and install dependencies,
 3. copy `.env.example` → `.env`,
@@ -34,7 +43,7 @@ until you add a key. That failure is your first task.
 
 ### Add a key
 
-Edit `.env` with Notepad/VS Code (never commit it). Minimum viable configuration:
+Edit `.env` with VS Code or any editor (Notepad on Windows; never commit it). Minimum viable configuration:
 
 ```dotenv
 DEFAULT_PROVIDER=deepseek
@@ -45,8 +54,18 @@ If you have an OpenAI key, add `OPENAI_API_KEY=sk-...` too — some later labs c
 
 Then:
 
+**Windows (PowerShell):**
+
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 doctor
+```
+
+**macOS / Linux:**
+
+```bash
+# macOS / Linux
+./tasks.sh doctor
 ```
 
 All rows should be `ok`/`info` now.
@@ -57,10 +76,10 @@ All rows should be `ok`/`info` now.
 
 This repo ships a ready workspace: interpreter, test discovery, Ruff on save, task runner, and debug configs.
 
-1. **File → Open Folder** → `D:\DevRepo\MyProjects\AgentLearning` (the repo itself, not its parent).
-2. Accept the recommended extensions prompt (Ruff, PowerShell, Markdown, Error Lens, GitLens, Todo Tree, Spell Checker).
-3. `Ctrl+Shift+P` → **Python: Select Interpreter** → `.venv\Scripts\python.exe`.
-4. `Terminal → Run Task…` → **AgentLab: doctor**.
+1. **File → Open Folder** → the repo root — `D:\DevRepo\MyProjects\AgentLearning` on Windows, `/Users/chenyaqi/dev_repo/MyProjects/AgentLearning` on this Mac (the repo itself, not its parent).
+2. Accept the recommended extensions prompt (Ruff, PowerShell, Markdown, Error Lens, GitLens, Todo Tree, Spell Checker). The PowerShell extension is only needed on Windows; the Python/Ruff/Markdown ones matter on both.
+3. `Ctrl+Shift+P` on Windows, `Cmd+Shift+P` on macOS → **Python: Select Interpreter** → `.venv\Scripts\python.exe` (Windows) / `.venv/bin/python` (macOS/Linux).
+4. `Terminal → Run Task…` → **AgentLab: doctor**. The task uses `tasks.ps1` on Windows and `tasks.sh` on macOS/Linux automatically.
 
 Details, a PyCharm alternative, and AI-assistant guardrails: [`docs/internals/IDE-SETUP.md`](docs/internals/IDE-SETUP.md). Rider/Visual Studio stay for SendOS `.NET` work.
 
@@ -70,8 +89,18 @@ Details, a PyCharm alternative, and AI-assistant guardrails: [`docs/internals/ID
 
 Run the foundation tests (these are provided, not your work):
 
+**Windows (PowerShell):**
+
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 test
+```
+
+**macOS / Linux:**
+
+```bash
+# macOS / Linux
+./tasks.sh test
 ```
 
 Expected: foundation tests pass; any `tests/week*` tests that exist fail on purpose — that is your work.
@@ -80,15 +109,36 @@ tracing, budgets, mocks, cassettes).
 
 Now run the environment check and a **deliberately unfinished** command:
 
+**Windows (PowerShell):**
+
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 doctor
 .\tasks.ps1 chat
 ```
 
+**macOS / Linux:**
+
+```bash
+# macOS / Linux
+./tasks.sh doctor
+./tasks.sh chat
+```
+
 `chat` will tell you "Week 1 lab not implemented yet". That is correct. Run the week 1 tests to see why:
 
+**Windows (PowerShell):**
+
 ```powershell
+# Windows (PowerShell)
 .\tasks.ps1 week 1
+```
+
+**macOS / Linux:**
+
+```bash
+# macOS / Linux
+./tasks.sh week 1
 ```
 
 You will see failing tests with messages like *"Week 1 lab: implement complete()"*. **That is your first
@@ -153,28 +203,29 @@ The tutor's job is to keep you in the **productive struggle zone**: hints before
 
 ## 8. Non-negotiables
 
-| Rule | Reason |
-|---|---|
-| Tests green before advancing | The next week assumes this week's abstractions |
-| `Budget` caps on every live run | Never debug an agent with an uncapped loop |
-| One commit per step | Bisectable history, portfolio evidence |
-| Weekly review + 5 flashcards | Spaced repetition is the only thing that makes terms stick |
-| SendOS bridge reading on Saturday | Transfer is the point of this whole repo |
-| Ask within 20 minutes of being stuck | Silence is the main way self-study fails |
+| Rule                                 | Reason                                                     |
+| ------------------------------------ | ---------------------------------------------------------- |
+| Tests green before advancing         | The next week assumes this week's abstractions             |
+| `Budget` caps on every live run    | Never debug an agent with an uncapped loop                 |
+| One commit per step                  | Bisectable history, portfolio evidence                     |
+| Weekly review + 5 flashcards         | Spaced repetition is the only thing that makes terms stick |
+| SendOS bridge reading on Saturday    | Transfer is the point of this whole repo                   |
+| Ask within 20 minutes of being stuck | Silence is the main way self-study fails                   |
 
 ---
 
 ## 9. If something breaks
 
-| Symptom | Fix |
-|---|---|
-| `uv: command not found` | `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` then restart the terminal |
-| `doctor` says no provider | Check `.env` exists, key has no quotes/spaces, `DEFAULT_PROVIDER` matches a configured provider |
-| `chat` prints week 1 panel | Correct — finish the lab |
-| Tests fail on `import agentlab` | Run `.\tasks.ps1 sync` |
-| `python` version wrong | `uv python install 3.12`; the repo pins it via `.python-version` |
-| Cost creeping up | Lower `AGENTLAB_RUN_BUDGET_USD`, use the mock provider for tests, and prefer DeepSeek for high-volume labs |
+| Symptom                           | Fix                                                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `uv: command not found`         | Windows: `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` · macOS/Linux: `curl -LsSf https://astral.sh/uv/install.sh \| sh` — then restart the terminal |
+| `doctor` says no provider       | Check `.env` exists, key has no quotes/spaces, `DEFAULT_PROVIDER` matches a configured provider          |
+| `chat` prints week 1 panel      | Correct — finish the lab                                                                                    |
+| Tests fail on `import agentlab` | Run `.\tasks.ps1 sync` (Windows) / `./tasks.sh sync` (macOS/Linux)                                          |
+| `./tasks.sh: Permission denied` | Run `chmod +x tasks.sh` (a copied checkout can lose the executable bit)                                     |
+| `python` version wrong          | `uv python install 3.12`; the repo pins it via `.python-version`                                         |
+| Cost creeping up                  | Lower `AGENTLAB_RUN_BUDGET_USD`, use the mock provider for tests, and prefer DeepSeek for high-volume labs |
 
 ---
 
-**Next step:** run `.\tasks.ps1 setup`, then open [`labs/week01-provider/README.md`](labs/week01-provider/README.md).
+**Next step:** run `.\tasks.ps1 setup` (Windows) or `./tasks.sh setup` (macOS/Linux), then open [`labs/week01-provider/README.md`](labs/week01-provider/README.md).

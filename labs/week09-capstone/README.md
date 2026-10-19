@@ -14,7 +14,7 @@ Every previous week built one mechanism in isolation. This week composes them in
 | Week 3 | structured output + prompt versions green — decisions are the same discipline |
 | Week 4 | context/memory green — the decision pipeline must fit a context budget |
 | Weeks 6–8 | approval, authority, audit, evals green — the capstone composes them |
-| Tooling | `.\.venv\Scripts\python.exe` works; run everything from the repo root |
+| Tooling | `.\.venv\Scripts\python.exe` (Windows) / `uv run python` (macOS/Linux) works; run everything from the repo root |
 
 Suggested split: 2 h read the brief + starter contracts; 6–8 h implement `decisions.py`, `catalogue.py`, `platform.py`; 2 h wire `web/`; 1 h demo + acceptance; 1–2 h write-up and reflection.
 
@@ -23,7 +23,13 @@ Suggested split: 2 h read the brief + starter contracts; 6–8 h implement `deci
 Run the prerequisite check first — it tells you what is missing, in order:
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe scripts\demo_capstone.py
+```
+
+```bash
+# macOS / Linux
+uv run python scripts/demo_capstone.py
 ```
 
 You are done when that script exits `0` and prints `DEMO COMPLETE`.
@@ -68,8 +74,15 @@ Implement the closed union documented at the top of the file: `parse_decision`, 
 `agentlab/web/app.py` is written but stubbed: `create_app(platform)` wires routes `POST /api/goal`, `POST /api/proposals`, `POST /api/proposals/{id}/approve`, `POST /api/proposals/{id}/execute`, `GET /api/audit` and the HTML page. FastAPI is an optional extra — importing `agentlab.web` must work without it. Run the UI with:
 
 ```powershell
+# Windows (PowerShell)
 .\.venv\Scripts\python.exe -m pip install -e ".[web]"
 .\.venv\Scripts\python.exe -c "from agentlab.web.app import create_app, main; main()"
+```
+
+```bash
+# macOS / Linux
+uv sync --extra web
+uv run python -c "from agentlab.web.app import create_app, main; main()"
 ```
 
 No route may invent text: the UI renders the typed decision and forwards approval/execution to the platform.
@@ -83,6 +96,7 @@ No route may invent text: the UI renders the typed decision and forwards approva
 ## 4. Acceptance criteria
 
 ```powershell
+# Windows (PowerShell)
 # 1. starter is replaced by your implementation; lab tests green
 .\.venv\Scripts\python.exe -m pytest tests/week09 -m week -q
 
@@ -97,6 +111,24 @@ No route may invent text: the UI renders the typed decision and forwards approva
 
 # 5. web imports without FastAPI installed
 .\.venv\Scripts\python.exe -c "from agentlab.web import FASTAPI_AVAILABLE; print(FASTAPI_AVAILABLE)"
+```
+
+```bash
+# macOS / Linux
+# 1. starter is replaced by your implementation; lab tests green
+uv run pytest tests/week09 -m week -q
+
+# 2. the demo runs the whole lifecycle offline and exits 0
+uv run python scripts/demo_capstone.py
+
+# 3. foundation still green (default pytest excludes week markers)
+uv run pytest -q
+
+# 4. lint your files
+uv run ruff check agentlab/capstone agentlab/web tests/week09
+
+# 5. web imports without FastAPI installed
+uv run python -c "from agentlab.web import FASTAPI_AVAILABLE; print(FASTAPI_AVAILABLE)"
 ```
 
 Strong submission also shows: two tenants cannot see each other's capabilities; a replayed approval cannot execute twice; and editing the proposal arguments after approval blocks execution (hash mismatch). Add those as tests in `tests/week09/test_capstone_extra.py` (mark them `pytest.mark.week`).
@@ -120,8 +152,8 @@ Strong submission also shows: two tenants cannot see each other's capabilities; 
 | `CatalogueError: write capability ... must set approval_required=True` | Fail-closed rule; a write may not be auto-approved by omission. |
 | `ApprovalError` on a fresh approval | Maker-checker: the demo's approver must differ from the proposer (analyst vs manager). |
 | `SystemExit: demo expected an action_proposal` | `submit_goal` consumed the scripted mock turn somewhere else; make it parse the text turn and return the decision. |
-| `ModuleNotFoundError: agentlab` when running the demo | Run from the repo root (`.\.venv\Scripts\python.exe scripts\demo_capstone.py`). |
-| `ConfigError: FastAPI is not installed` | Optional extra missing: `pip install -e ".[web]"`. Import of the module must still work. |
+| `ModuleNotFoundError: agentlab` when running the demo | Run from the repo root: `.\.venv\Scripts\python.exe scripts\demo_capstone.py` (Windows) / `uv run python scripts/demo_capstone.py` (macOS/Linux). |
+| `ConfigError: FastAPI is not installed` | Optional extra missing: `pip install -e ".[web]"` (Windows) / `uv sync --extra web` (macOS/Linux). Import of the module must still work. |
 
 ## 7. SendOS bridge
 

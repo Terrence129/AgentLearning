@@ -10,7 +10,7 @@
 
 | Gate | Command / evidence | Pass criterion | Where it maps |
 |---|---|---|---|
-| **G. Green** | `.\tasks.ps1 week NN` (equivalently `pytest tests/weekNN -m week -q`) | All week tests pass, no skips, no xfail; suite runs offline (< 10 s) | Lab deliverable |
+| **G. Green** | `.\tasks.ps1 week NN` (Windows) / `./tasks.sh week NN` (macOS/Linux), equivalently `pytest tests/weekNN -m week -q` | All week tests pass, no skips, no xfail; suite runs offline (< 10 s) | Lab deliverable |
 | **E. Explain** | `docs/plan/quizzes/weekNN.md` closed book + 150-word teach-back, no notes | Quiz ≥ 8/10 **and** teach-back mentions the mechanism + one failure mode it prevents | Concepts list in Learning Plan |
 | **T. Transfer** | SendOS bridge note in the weekly review (what matches / what differs / what you would change) | Three specific answers naming real C# types/files, with one open question you cannot answer yet | Day-job goal (A) |
 
@@ -25,7 +25,7 @@ A week is **done** only when G + E + T all pass. Stretch goals, extra reading an
 
 | Wk | Green (tests) | Explain (quiz + teach-back) | Transfer (SendOS) | Artifact | Hours |
 |---|---|---|---|---|---|
-| 0 | `.\tasks.ps1 test` foundation only | Baseline: what is a token / streaming / a retry failure | — | `notes/week00-baseline.md` with one priced call | 3 |
+| 0 | `.\tasks.ps1 test` (Windows) / `./tasks.sh test` (macOS/Linux), foundation only | Baseline: what is a token / streaming / a retry failure | — | `notes/week00-baseline.md` with one priced call | 3 |
 | 1 | `tests/week01` | Quiz 1 ≥ 8; explain retries + SSE + provider seam | `Send.Model.Adapter` — 3 shared duties, 2 missing | `agentlab chat` streams + prints tokens/cost | 8–10 |
 | 2 | `tests/week02` | Quiz 2 ≥ 8; explain loop termination + budget placement | `CapabilityDefinition`, registry, `DirectCapabilityHandler` | 5 golden tasks + full trace | 10–12 |
 | 3 | `tests/week03` | Quiz 3 ≥ 8; explain schema failure + repair economics | `IStructuredCompletionHandler`, `JsonSchemaValidator`, decision family | `analyze() -> Decision` + failure-rate report | 8–10 |

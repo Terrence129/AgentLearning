@@ -17,7 +17,7 @@ Read the tests **before** the brief. List them and what each one actually demand
 | `test_...` | | red |
 | `test_...` | | red |
 
-Command: `.\tasks.ps1 week NN`
+Command: `.\tasks.ps1 week NN` (Windows) / `./tasks.sh week NN` (macOS/Linux)
 
 ## 3. Plan before code (5 minutes, max)
 

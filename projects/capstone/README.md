@@ -35,7 +35,7 @@ goal (tenant + actor)
 
 ## Build order (do not reorder)
 
-1. `python scripts\demo_capstone.py` — read the "DEMO BLOCKED" list; it names the first gap.
+1. `python scripts\demo_capstone.py` (Windows) · `uv run python scripts/demo_capstone.py` (macOS / Linux) — read the "DEMO BLOCKED" list; it names the first gap.
 2. `decisions.py` -> `pytest tests/week09 -m week -q` (decision tests go green).
 3. `catalogue.py` -> catalogue tests go green.
 4. `platform.py` -> the demo completes end-to-end.
