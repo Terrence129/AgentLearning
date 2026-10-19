@@ -13,7 +13,9 @@ This repository is two things at once:
 1. **A working Python codebase** (`agentlab/`) that you grow one capability at a time: provider adapter → agent loop → structured output → context & memory → MCP → orchestration → evals → guardrails → capstone.
 2. **A curriculum** (`docs/plan/`, `labs/`, `tests/`) that tells you exactly what to build, in what order, and how to know you are done.
 
-Every week ships a runnable artifact and a test suite that **defines** the week's deliverable. If `pytest tests/week03 -q` is green, you finished week 3 — no self-assessment required.
+Every week ships a runnable artifact and a test suite that **defines** the week's deliverable. If `pytest tests/week03 -m week -q` is green, you finished week 3 — no self-assessment required.
+
+> The `-m week` marker is required: the default `pytest` run excludes lab tests (they start red on purpose), so `pytest tests/week03 -q` on its own would collect nothing.
 
 ```
 Week 1  model & provider seam ──►  Week 4  context & memory ──►  Week 7  evals & observability
@@ -154,7 +156,7 @@ High-value pairings (details in [`docs/sendos/BRIDGE.md`](docs/sendos/BRIDGE.md)
 
 ## Status
 
-- [x] Foundation: package skeleton, config, tracing, budgets, mock provider, tool registry — 29 tests green
+- [x] Foundation: package skeleton, config, tracing, budgets, mock provider, tool registry — 30 tests green
 - [x] All 9 lab scaffolds: starter stubs, failing specifications, reference solutions, lab briefs — **563 lab tests**, each independently verified red → green → restored
 - [x] Research base (5 reports, ~20k words), companion textbook integrated with a week-by-week chapter map, learning plan, concept notes, glossary, quizzes, flashcards
 - [x] SendOS bridge docs + C# bridge labs (dotnet build: 0 warnings, 0 errors; both self-test suites pass)

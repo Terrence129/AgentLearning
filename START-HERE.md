@@ -124,7 +124,8 @@ open all week. You will fill it in on Saturday.
 ## 6. Your first 60 minutes of real work
 
 1. Open `agentlab/providers/openai_compat.py` and read the module docstring.
-2. Open `tests/week01/test_complete.py` (or whichever order the brief gives) and read the first failing test.
+2. Open `tests/week01/test_request_mapping.py` (or whichever order the brief gives — the other files are
+   `test_response_parsing.py`, `test_retry.py`, `test_streaming.py`) and read the first failing test.
 3. Implement `_build_payload` first. Run that test. Iterate.
 4. When stuck >20 minutes, write the question down and ask your AI tutor (see below) — do not silently struggle.
 
