@@ -53,6 +53,17 @@ All rows should be `ok`/`info` now.
 
 > **Budget guard:** every run is capped by `AGENTLAB_RUN_BUDGET_USD` (default $0.50). Leave it on.
 
+### Open it in VS Code (2 min)
+
+This repo ships a ready workspace: interpreter, test discovery, Ruff on save, task runner, and debug configs.
+
+1. **File → Open Folder** → `D:\DevRepo\MyProjects\AgentLearning` (the repo itself, not its parent).
+2. Accept the recommended extensions prompt (Ruff, PowerShell, Markdown, Error Lens, GitLens, Todo Tree, Spell Checker).
+3. `Ctrl+Shift+P` → **Python: Select Interpreter** → `.venv\Scripts\python.exe`.
+4. `Terminal → Run Task…` → **AgentLab: doctor**.
+
+Details, a PyCharm alternative, and AI-assistant guardrails: [`docs/internals/IDE-SETUP.md`](docs/internals/IDE-SETUP.md). Rider/Visual Studio stay for SendOS `.NET` work.
+
 ---
 
 ## 3. First contact: see the foundation work (20 min)

@@ -1,0 +1,62 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.cwd": "${workspaceFolder}",
+
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+  "ruff.configuration": "${workspaceFolder}/pyproject.toml",
+
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.rulers": [110],
+  "editor.formatOnSave": false,
+  "editor.bracketPairColorization.enabled": true,
+
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true,
+    "**/.mypy_cache": true,
+    "**/*.pyc": true
+  },
+  "search.exclude": {
+    "**/.venv": true,
+    "**/bin": true,
+    "**/obj": true,
+    "**/docs/books/**/*.pdf": true
+  },
+  "files.watcherExclude": {
+    "**/.venv/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true
+  },
+
+  "markdown.preview.breaks": true,
+  "markdown.validate.enabled": true,
+  "markdown.validate.fileLinks.enabled": "warning",
+  "markdown.validate.fragmentLinks.enabled": "warning",
+
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.cwd": "${workspaceFolder}",
+
+  "git.autofetch": false,
+  "git.confirmSync": false,
+  "explorer.compactFolders": false,
+
+  "todo-tree.general.tags": ["TODO", "FIXME", "HINT", "Week 1 lab", "Week 2 lab", "Week 3 lab", "Week 4 lab", "Week 5 lab", "Week 6 lab", "Week 7 lab", "Week 8 lab", "Week 9 lab"],
+
+  "cSpell.words": ["agentlab", "Bojie", "deepseek", "pytest", "pydantic", "httpx", "LangGraph", "MCP", "pass^k", "asyncio", "typer", "uvicorn"],
+  "cSpell.ignorePaths": ["**/.venv/**", "**/uv.lock", "**/docs/books/**"]
+}

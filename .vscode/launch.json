@@ -1,0 +1,55 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: current test file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-m", "week", "-v", "-s"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "purpose": ["debug-test"]
+    },
+    {
+      "name": "Debug: current test file (no lab filter)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-v", "-s"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug: agentlab chat",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "agentlab.cli",
+      "args": ["chat"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug: agentlab doctor",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "agentlab.cli",
+      "args": ["doctor"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug: capstone demo",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/demo_capstone.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}

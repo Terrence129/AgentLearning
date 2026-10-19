@@ -42,7 +42,12 @@ dotnet/**/obj/
 .vs/
 
 # --- editors / OS --------------------------------------------------------
-.vscode/
+# Keep the shared VS Code workspace config in git; ignore personal overrides.
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 .idea/
 .DS_Store
 Thumbs.db

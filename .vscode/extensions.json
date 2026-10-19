@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+    "ms-vscode.powershell",
+    "yzhang.markdown-all-in-one",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "Gruntfuggly.todo-tree",
+    "streetsidesoftware.code-spell-checker"
+  ],
+  "unwantedRecommendations": []
+}

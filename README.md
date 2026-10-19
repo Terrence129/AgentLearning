@@ -74,6 +74,7 @@ Read **[START-HERE.md](START-HERE.md)** first — it is a 90-minute on-ramp, not
 | [`docs/research/`](docs/research/README.md) | The deep-research reports this curriculum was built from |
 | [`docs/books/`](docs/books/README.md) | Companion textbooks: assessment, chapter→week map, reading paths |
 | [`docs/sendos/`](docs/sendos/README.md) | SendOS concept map, bridge labs, and reading order |
+| [`docs/internals/IDE-SETUP.md`](docs/internals/IDE-SETUP.md) | Recommended editor + the preconfigured VS Code workspace (`.vscode/`) |
 | [`docs/glossary.md`](docs/glossary.md) | Terms you should be able to define without notes |
 | [`agentlab/`](agentlab/) | The package you build: providers, loop, tools, context, mcp, orchestrator, evals, guard, capstone |
 | [`labs/`](labs/) | Weekly lab briefs: goal, specification, acceptance criteria, stretch |
