@@ -428,7 +428,7 @@ Ordered by SendOS relevance × teaching value × lab feasibility.
 
 The course package already exists and is well aimed: `agentlab/orchestrator/__init__.py` states the theme as *"smallest sufficient shape"* — the exact rule `TopologyClassifier` implements. Suggested homes:
 
-课程包已经存在，而且目标很准：`agentlab/orchestrator/__init__.py` 把主题表述为*"最小且足够的形态"* —— 这正是 `TopologyClassifier` 所实现的规则。建议的落脚点如下：
+课程包已经存在，而且目标很准：`agentlab/orchestrator/__init__.py` 把主题表述为“*最小且足够的形态*” —— 这正是 `TopologyClassifier` 所实现的规则。建议的落脚点如下：
 
 | SendOS mechanism<br>SendOS 机制 | `agentlab/` target<br>`agentlab/` 中的目标位置 |
 |---|---|

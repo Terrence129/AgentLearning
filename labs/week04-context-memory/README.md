@@ -26,7 +26,7 @@ This week you build the two mechanisms that let a long task survive: a
 summary. You then build the memory substrate — from-scratch retrieval, episodic
 events, semantic facts with provenance — so state can live outside the window.
 
-模型没有记忆：提示词*就是* Agent 在这一轮中的整个世界，而且它越长效果越差 —— 上下文腐化（context rot）会随着输入长度的增加而降低准确率，哪怕只有一个干扰项也足以造成伤害（参见 [`docs/research/01-agent-architecture-sota.md`](../../docs/research/01-agent-architecture-sota.md) §3.1）。本周你要构建两种让长任务得以存活的机制：一个**感知优先级的预算**，它永远不会驱逐被固定（pinned）的约束；以及一个**压缩（compaction）**过程，它用一份有长度上限的延续摘要替换旧的对话记录。接着你要构建记忆的底层基础 —— 从零实现的检索、情景记忆事件、带来源（provenance）的语义记忆事实 —— 让状态可以存在于上下文窗口之外。
+模型没有记忆：提示词*就是* Agent 在这一轮中的整个世界，而且它越长效果越差 —— 上下文腐化（context rot）会随着输入长度的增加而降低准确率，哪怕只有一个干扰项也足以造成伤害（参见 [`docs/research/01-agent-architecture-sota.md`](../../docs/research/01-agent-architecture-sota.md) §3.1）。本周你要构建两种让长任务得以存活的机制：一个**感知优先级的预算**，它永远不会驱逐被固定（pinned）的约束；以及一个**压缩**（compaction）过程，它用一份有长度上限的延续摘要替换旧的对话记录。接着你要构建记忆的底层基础 —— 从零实现的检索、情景记忆事件、带来源（provenance）的语义记忆事实 —— 让状态可以存在于上下文窗口之外。
 
 Without this week, a 20-turn task either overflows the provider limit or quietly
 forgets the one constraint that mattered ("never refund above $500").

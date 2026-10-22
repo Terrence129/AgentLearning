@@ -4,7 +4,7 @@
 
 Build the regression gate that turns *"it seems better"* into *"the numbers say it is better, and here is the proof"*.
 
-构建一道回归关卡，把*「看起来更好了」*变成*「数据表明它确实更好，证据在此」*。
+构建一道回归关卡，把「*看起来更好了*」变成「*数据表明它确实更好，证据在此*」。
 
 ## 1. Why this week exists
 
